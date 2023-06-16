@@ -1,0 +1,61 @@
+.boxis{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    
+}
+.iniciar-sesion{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: auto;
+    width: auto;
+    padding: 50px 90px;
+    border: 1px solid black;
+    border-radius: 20px;
+    transition: .5s;
+}
+.iniciar-sesion h1{
+    margin-top: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.iniciar-sesion:hover{
+    box-shadow: 12px 12px 30px black;
+}
+.iscaja input{
+    height: 35px;
+    width: 300px;
+    display: flex;
+    margin-top: 40px;
+    flex-direction: column;
+    transition: .4s;
+}
+.iscaja input:focus {
+    
+    background-color: #d6e1ec;
+}
+.isbtn {
+    display: flex;
+    font-size: 15px;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 120px;
+    border-radius: 20px;
+    outline: 1px solid black;
+    background-color: rgb(162, 195, 250);
+    cursor: pointer;
+    margin: 50px auto;
+    border: none;
+    transition: .4s;
+}
+.isbtn:hover{
+    width: 300px;
+    color: white;
+    background-color: #124d81;
+}
+.mensaje{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+

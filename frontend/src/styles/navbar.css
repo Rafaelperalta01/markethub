@@ -1,0 +1,29 @@
+.main-barra {
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    background-color: rgb(99, 99, 240);
+    align-items: center;
+}
+.main-barra h1 {
+    margin-left: 5vw;
+}
+.main-barra-links{
+    display: flex;
+    align-items: center;
+    gap: 3vw;
+    margin-right: 8vw;
+}
+.link{
+    color: #ffffff;
+    text-decoration: none;
+    transition: .3s;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 200;
+}
+.link:hover{
+    color: #cacaca;
+}
+
+
+

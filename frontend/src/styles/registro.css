@@ -1,0 +1,63 @@
+.boxr{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+
+.registro{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: auto;
+    width: auto;
+    padding: 50px 90px;
+    border: 1px solid black;
+    border-radius: 20px;
+    transition: 1s;
+}
+.registro h1{
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.registro:hover{
+    box-shadow: 12px 12px 30px black;
+}
+.rcaja input{
+    height: 35px;
+    width: 300px;
+    display: flex;
+    margin-top: 25px;
+    flex-direction: column;
+    transition: .4s;
+}
+.rcaja input:focus {
+    background-color: #d6e1ec;
+}
+
+.rbtn {
+    display: flex;
+    font-size: 15px;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 150px;
+    border-radius: 20px;
+    outline: 1px solid black;
+    background-color: rgb(177, 205, 255);
+    cursor: pointer;
+    margin: 30px auto;
+    border: none;
+    transition: .4s;
+}
+.rbtn:hover{
+    width: 300px;
+    color: white;
+    background-color: rgb(18, 77, 129);
+}
+
+
+
+
+

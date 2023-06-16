@@ -1,0 +1,39 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.main-barra {
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    background-color: rgb(99, 99, 240);
+    align-items: center;
+}
+.main-barra h1 {
+    margin-left: 5vw;
+}
+.main-barra-links{
+    display: flex;
+    align-items: center;
+    gap: 3vw;
+    margin-right: 8vw;
+}
+.main1{
+    height: 95vh;
+    width: 100%;
+    background-color: rgb(243, 238, 238);
+}
+.main1 p {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+}
+.main1 .img1 {
+    margin-left: 10vw;
+    margin-top: 10vh;
+    max-height: 40vh;
+}
+
+
+
+
