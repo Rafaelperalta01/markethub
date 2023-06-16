@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 100px;
+    margin-top: 70px;
 }
 
 
@@ -12,7 +12,7 @@
     flex-direction: column;
     height: auto;
     width: auto;
-    padding: 50px 90px;
+    padding: 50px 70px;
     border: 1px solid black;
     border-radius: 20px;
     transition: 1s;
