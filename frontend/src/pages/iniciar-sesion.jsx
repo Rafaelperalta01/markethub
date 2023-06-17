@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link     } from 'react-router-dom'
 import Navbar from '../components/nav'
 import { useState } from 'react'
 import '../styles/iniciar-sesion.css'
@@ -17,7 +17,10 @@ export default function IniciarSesion(){
             username,
             password
         })
-        .then(e =>{alert(e.data)})
+        .then(e =>{
+            alert(e.data)
+
+        })
         .catch(e =>{alert(e.message)})
         limpiar();
     }
@@ -28,7 +31,6 @@ export default function IniciarSesion(){
         username.value = ''; 
         password.value = ''; 
     }
-
 
     return(
         <>

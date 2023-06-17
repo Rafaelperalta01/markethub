@@ -1,0 +1,15 @@
+.cajamain2{
+    height: 35vh;
+    width: 25vw;
+    border: 1px solid white;
+    border-radius: 20px;
+    animation: flotar 3s infinite;
+}
+
+
+@keyframes flotar{
+    0%{transform: translateY(0);}
+    50%{transform: translateY(20px);}
+    0%{transform: translateY(0);}
+}
+

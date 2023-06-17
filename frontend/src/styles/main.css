@@ -6,7 +6,7 @@
     display: flex;
     justify-content: space-between;
     height: 70px;
-    background-color: rgb(99, 99, 240);
+    background-color: #6363f0;
     align-items: center;
 }
 .main-barra h1 {
@@ -21,19 +21,114 @@
 .main1{
     height: 95vh;
     width: 100%;
-    background-color: rgb(243, 238, 238);
+    background-color: #f3eeee;
+    margin: 0;
 }
-.main1 p {
+.custom-shape-divider-bottom-1686963139 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1686963139 svg {
+    position: relative;
+    display: block;
+    width: calc(128% + 1.3px);
+    height: 150px;
+}
+
+.custom-shape-divider-bottom-1686963139 .shape-fill {
+    fill: #4f4fe6;
+}
+.main1 .parrafo1 {
+    padding-top: 40px;
+    font-weight: 600;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
-    font-size: 30px;
+    font-size: 40px;
+}
+.main1 .parrafo2{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 40px;
+    padding-top: 40px;
+    text-align: center;
 }
 .main1 .img1 {
-    margin-left: 10vw;
-    margin-top: 10vh;
-    max-height: 40vh;
+    padding-top: 10vh;
+    max-height: 35vh;
+    display: block;
+    margin: 0 auto;
+}
+.main2 {
+    height: 75vh;
+    margin-top: -23px;
+    background-color: #4f4fe6
+}
+.cajas{
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 5%;
+}
+.parrafo3{
+    padding-top: 50px;
+    color: white;
+    letter-spacing: 1.2px;
+    font-size: 55px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
 }
 
-
+.main3{
+    height: 30vh;
+    background-image: linear-gradient(#4f4fe6,#f3eeee) ;
+}
+.cajamain3{
+    padding-top: 50px;
+    height: 300px;
+    width: 100%;
+    background-color: #13136d;
+}
+.parrafo4{
+    color: white;
+    font-size: 40px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    padding: 0 70px;
+}
+.btn-registrar{
+    display: flex;
+    margin: 60px auto;
+    height: 50px;
+    width: 250px;
+    background-color: #f3eeee;
+    color: black;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 20px;
+    transition: .5s;
+}
+.btn-registrar:hover{
+    width: 350px;
+    background-color: #a8a8a8;
+}
+.usuarios{
+    margin-top: 50px;
+    height: 70vh;
+    width: 100%;
+    background-color: #f3eeee;
+}
+.footer{
+    height: 250px;
+    background-color: #040025;
+    color: white;
+}
 
 
