@@ -19,15 +19,14 @@
     margin-right: 8vw;
 }
 .main1{
-    height: 95vh;
+    height: 105vh;
     width: 100%;
     background-color: #f3eeee;
     margin: 0;
 }
 .custom-shape-divider-bottom-1686963139 {
     position: absolute;
-    bottom: 0;
-    left: 0;
+    bottom: -76px;
     width: 100%;
     overflow: hidden;
     line-height: 0;
@@ -65,7 +64,7 @@
 }
 .main2 {
     height: 75vh;
-    margin-top: -23px;
+    margin-top: -32px;
     background-color: #4f4fe6
 }
 .cajas{
@@ -83,7 +82,7 @@
 }
 
 .main3{
-    height: 30vh;
+    height: 50vh;
     background-image: linear-gradient(#4f4fe6,#f3eeee) ;
 }
 .cajamain3{
@@ -120,7 +119,6 @@
     background-color: #a8a8a8;
 }
 .usuarios{
-    margin-top: 50px;
     height: 70vh;
     width: 100%;
     background-color: #f3eeee;
