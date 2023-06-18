@@ -3,8 +3,9 @@ import './App.css';
 import {  BrowserRouter,Route, Routes } from 'react-router-dom'
 import Registro from './pages/registrarse';
 import IniciarSesion from './pages/iniciar-sesion';
-import Userlog from './pages/userlog';
+import Userlog from './pages/ui';
 import NotFound from './pages/notFound';
+import UserInterface from './pages/ui';
 
  
 function App() {
@@ -16,7 +17,7 @@ function App() {
           <Route path='*' element={<NotFound />} />
           <Route path='/registrarse' element={<Registro />} />
           <Route path='/iniciar-sesion' element={< IniciarSesion/>} />
-          <Route path='/usuario' element={< Userlog/>} />
+          <Route path='/usuario' element={< UserInterface/>} />
         </Routes>
       </BrowserRouter>
     </div>

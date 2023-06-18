@@ -22,7 +22,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .registro:hover{
-    box-shadow: 12px 12px 30px black;
+    box-shadow: 5px 5px 20px black;
 }
 .rcaja input{
     height: 35px;

@@ -30,7 +30,7 @@ export default function Main(){
             </div>
             <div className='main3'>
                 <div className='cajamain3'>
-                    <p className='parrafo4'>Tenemos las mejores ofertas y precios para vos, pero primero tenés que ser usuario y registrarte </p>
+                    <p className='parrafo4'>Tenemos las mejores ofertas y precios para vos pero primero tenés que ser usuario y registrarte</p>
                     <a><Link className='btn-registrar' to={'/registrarse'}>Registrate aquí</Link></a>
                 </div>
             </div>

@@ -35,8 +35,7 @@ server.post("/registrar", async (req, res) => {
       if (err) {
         console.log(err);
       } else {
-        res.send("Registrado con exito");
-
+        res.send("Registrado con exito, ve a iniciar sesion.");
         console.log("datos insertados con exito");
       }
     }
@@ -55,17 +54,18 @@ server.post("/iniciar-sesion", (req, res) => {
         console.log(err);
       } else {
         if (result.length > 0) {
-          const contraseñaHash = result[0].contraseña;
-          const esIgual = await bcrypt.compare(password, contraseñaHash);
-          if (esIgual) {
-            console.log("credenciales correctos");
-            res.send("inicio exitoso");
+          const datos = result[0]; //guardo datos del usuario en una variable
+          const contraseñaHash = datos.contraseña; //guardo constraseña encriptada de la db en una variable
+          const esIgual = await bcrypt.compare(password, contraseñaHash); //comparo contraseña ingresada con la contraseña de la db
+          if(esIgual) {
+            console.log("credenciales correctos"); 
+            res.send({ message: "inicio exitoso", datos: JSON.stringify(datos) }); //envio al front un mensaje y la variable datos que contiene los datos de la db en cadena.
           } else {
             console.log("contraseña incorrecta");
-            res.send("contraseña incorrecta");
+            res.send({ message: "contraseña incorrecta" });
           }
         } else {
-          res.send("usuario no existe");
+          res.send({ message: "usuario no existe"});
           console.log("usuario no encontrado");
         }
       }

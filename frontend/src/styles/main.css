@@ -19,7 +19,7 @@
     margin-right: 8vw;
 }
 .main1{
-    height: 105vh;
+    height: 100vh;
     width: 100%;
     background-color: #f3eeee;
     margin: 0;
@@ -63,8 +63,8 @@
     margin: 0 auto;
 }
 .main2 {
+    margin-top: .3%;
     height: 75vh;
-    margin-top: -32px;
     background-color: #4f4fe6
 }
 .cajas{
