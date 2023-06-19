@@ -1,3 +1,6 @@
+.all{
+    background-color: #f3eeee;
+}
 .saludo{
     text-align: center;
     font-size: 18px;
@@ -20,4 +23,35 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
 }
+.productos ul {
+    display: flex;
+    list-style: none;
+    gap: 20%;
+    justify-content: center;
+    margin: 3% 0 ;
+}
+.productos ul li {
+    font-size: 18px;
+    border: 1px solid black;
+    background-image: linear-gradient(15deg,#33448d,#145da1) ;
+    border-radius: 20px;
+    padding: 10px 50px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    transition: .8s;
+}
+.productos li:hover{
+    background-image: linear-gradient(15deg,#33448d,#598cbd) ;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
 

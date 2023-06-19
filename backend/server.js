@@ -19,6 +19,7 @@ server.get("/", (req, res) => {
   res.send("Hola desde el servidor");
 });
 
+//registrar usuario
 server.post("/registrar", async (req, res) => {
   const nombre = req.body.nombre;
   const apellido = req.body.apellido;
@@ -42,13 +43,14 @@ server.post("/registrar", async (req, res) => {
   );
 });
 
+//iniciar sesion
 server.post("/iniciar-sesion", (req, res) => {
-  const username = req.body.username;
+  const username = req.body.username; //datos que recibo desde el front
   const password = req.body.password;
 
-  conector.query(
-    "SELECT * FROM usuarios WHERE username=? ",
-    [username],
+  conector.query( //busqueda del usuario en la db
+    "SELECT * FROM usuarios WHERE username=? ", //sentencia sql para buscar en la db
+    [username], //paso valor recibido desde el front para realizar la busqueda
     async (err, result) => {
       if (err) {
         console.log(err);
@@ -71,6 +73,17 @@ server.post("/iniciar-sesion", (req, res) => {
       }
     }
   );
+});
+
+//obtener zapatillas
+server.get('/zapa',(req,res)=>{
+  conector.query(`SELECT * FROM zapatillas`, (err,result)=>{ //busqueda de zapatillas en la db
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result); //envio resultados al front
+    }
+  });
 });
 
 const port = 3001;
