@@ -86,6 +86,16 @@ server.get('/zapa',(req,res)=>{
   });
 });
 
+server.get('/indumentaria', (req,res)=>{
+  conector.query(`SELECT * FROM indumentaria`,(err,result)=>{
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  })
+})
+
 const port = 3001;
 
 server.listen(port, () => {

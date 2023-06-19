@@ -9,7 +9,12 @@ import { useState } from "react";
 
 export default function UserInterface(){
 
-    const [lista, setLista] = useState([]); //creo array para guardar las zapatillas que reciba
+    const [producto, setProducto] = useState('')
+
+
+    const [listaZapas, setListaZapas] = useState([]); //creo array para guardar las zapatillas que reciba
+    const [listaIndumentaria, setListaIndumentaria] = useState([]); //creo array para guardar la ropa que reciba
+    const [listaPromos, setListaPromos] = useState([]); //creo array para guardar las promos que reciba
 
 
     const location = useLocation();
@@ -18,8 +23,16 @@ export default function UserInterface(){
     const userDatos = JSON.parse(datos); //creo una variable que contenga los datos y los convierto en json, ya puedo acceder a los datos desde la variable creada.
 
     const obtenerZapatillas = () =>{
+        setProducto('zapatillas');
         axios.get('http://localhost:3001/zapa') //hago solicitud get al back para obtener las zapatillas
-        .then(result =>{ setLista((result.data))}) //guardo los resultados del back en setLista
+        .then(result =>{ setListaZapas((result.data))}) //guardo los resultados del back en setLista
+        .catch(e =>{ console.log(e)}) //en caso de error imprimo en consola
+    }
+
+    const obtenerIndumentaria = () =>{
+        setProducto('indumentaria');
+        axios.get('http://localhost:3001/indumentaria') //hago solicitud get al back para obtener las ropas
+        .then(result =>{ setListaIndumentaria((result.data))}) //guardo los resultados del back en setListaIndumentaria
         .catch(e =>{ console.log(e)}) //en caso de error imprimo en consola
     }
     
@@ -35,22 +48,39 @@ export default function UserInterface(){
             <div className="productos">
                 <ul>
                     <li onClick={obtenerZapatillas}>Zapatillas</li> {/* evento click que realiza la solicitud al back con la funcion creada*/}
-                    <li>Indumentaria</li>
+                    <li onClick={obtenerIndumentaria}>Indumentaria</li>
                     <li>Promos</li>
                 </ul>
             </div>
             <p className="msj-promo">ESTAS SON LAS PROMOS PARA USUARIOS:</p>
             <div className='promos'>
-            {lista.map((promo, index)=>(  //lista es el array que almacena todas las zapas y uso map para iterar ese array
-                <div key={index}>
-                    <p>ID: {promo.idzapatilla}</p>
-                    <p>Marca: {promo.marca}</p>
-                    <p>Nombre: {promo.nombre}</p>
-                    <p>Color: {promo.color}</p>
-                    <p>Talle: {promo.talle}</p>
-                    <p>Precio: {promo.precio}</p>
+            {producto === 'zapatillas' && (
+                <div className='promos'>
+                    {listaZapas.map((zapas, index) => (
+                        <div key={index}>
+                            <p>ID: {zapas.idzapatilla}</p>
+                            <p>Marca: {zapas.marca}</p>
+                            <p>Nombre: {zapas.nombre}</p>
+                            <p>Color: {zapas.color}</p>
+                            <p>Talle: {zapas.talle}</p>
+                            <p>Precio: {zapas.precio}</p>
+                        </div>
+                    ))}
                 </div>
-            ))}
+            )}
+            {producto === 'indumentaria' && (
+                <div className='promos'>
+                    {listaIndumentaria.map((ind, index) => (
+                        <div key={index}>
+                            <p>ID : {ind.idpruducto}</p>
+                            <p>Categoria: {ind.categoria}</p>
+                            <p>Nombre: {ind.nombre}</p>
+                            <p>Color: {ind.color}</p>
+                            <p>Precio: {ind.precio}</p>
+                        </div>
+                    ))}
+                </div>
+            )}
             </div>
         </div>
     );
