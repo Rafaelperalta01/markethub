@@ -1,5 +1,6 @@
 import { useLocation, Link } from "react-router-dom";
-import CajaUser from "../components/caja";
+import CajaUser, { CajaIndumentaria } from "../components/caja";
+import logoInfo from '../images/iu/lofoInfo.jpg';
 import '../styles/ui.css';
 import '../styles/navbar.css'
 import axios from "axios";
@@ -35,7 +36,7 @@ export default function UserInterface(){
         .then(result =>{ setListaIndumentaria((result.data))}) //guardo los resultados del back en setListaIndumentaria
         .catch(e =>{ console.log(e)}) //en caso de error imprimo en consola
     }
-    
+
     return(
         <div className="all">
             <div className="main-barra">
@@ -44,42 +45,35 @@ export default function UserInterface(){
                     <p><Link className="link" to={'/'}>cerrar sesion</Link></p>
                 </div>
             </div>
-            <p className="saludo">Bienvenido, {userDatos.nombre}</p>
             <div className="productos">
+                <p className="saludo">Bienvenido, {userDatos.nombre} </p>
                 <ul>
                     <li onClick={obtenerZapatillas}>Zapatillas</li> {/* evento click que realiza la solicitud al back con la funcion creada*/}
                     <li onClick={obtenerIndumentaria}>Indumentaria</li>
                     <li>Promos</li>
                 </ul>
             </div>
-            <p className="msj-promo">ESTAS SON LAS PROMOS PARA USUARIOS:</p>
+            
             <div className='promos'>
             {producto === 'zapatillas' && (
-                <div className='promos'>
-                    {listaZapas.map((zapas, index) => (
-                        <div key={index}>
-                            <p>ID: {zapas.idzapatilla}</p>
-                            <p>Marca: {zapas.marca}</p>
-                            <p>Nombre: {zapas.nombre}</p>
-                            <p>Color: {zapas.color}</p>
-                            <p>Talle: {zapas.talle}</p>
-                            <p>Precio: {zapas.precio}</p>
-                        </div>
-                    ))}
-                </div>
+                <>
+                    <p className="msj-promo">ESTAS SON LAS ZAPAS PARA USUARIOS:</p>
+                    <div className='zapas'>
+                        {listaZapas.map((zapas, index) => (
+                            <CajaUser props={zapas} />
+                        ))}
+                    </div>
+                </>
             )}
             {producto === 'indumentaria' && (
-                <div className='promos'>
-                    {listaIndumentaria.map((ind, index) => (
-                        <div key={index}>
-                            <p>ID : {ind.idpruducto}</p>
-                            <p>Categoria: {ind.categoria}</p>
-                            <p>Nombre: {ind.nombre}</p>
-                            <p>Color: {ind.color}</p>
-                            <p>Precio: {ind.precio}</p>
-                        </div>
-                    ))}
-                </div>
+                <>
+                    <p className="msj-promo">TENEMOS LA MEJOR ROPA PARA VOS:</p>
+                    <div className='zapas'>
+                        {listaIndumentaria.map((ind, index) => (
+                            <CajaIndumentaria props={ind} />
+                        ))}
+                    </div>
+                </>
             )}
             </div>
         </div>

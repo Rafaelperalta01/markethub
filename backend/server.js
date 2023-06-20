@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql");
-const bcrypt = require("bcryptjs"); //importar modulo para encriptar
+const bcrypt = require("bcryptjs"); //importar modulo para encriptar contraseña
 
 const server = express();
 
@@ -86,6 +86,7 @@ server.get('/zapa',(req,res)=>{
   });
 });
 
+//obtener productos de tabla indumentaria
 server.get('/indumentaria', (req,res)=>{
   conector.query(`SELECT * FROM indumentaria`,(err,result)=>{
     if (err) {
