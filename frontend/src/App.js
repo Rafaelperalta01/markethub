@@ -18,6 +18,7 @@ function App() {
           <Route path='/registrarse' element={<Registro />} />
           <Route path='/iniciar-sesion' element={< IniciarSesion/>} />
           <Route path='/usuario' element={< UserInterface/>} />
+          <Route path='/usuario/:id' element={< UserInterface/>} />
         </Routes>
       </BrowserRouter>
     </div>

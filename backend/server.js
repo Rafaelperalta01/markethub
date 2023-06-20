@@ -97,6 +97,19 @@ server.get('/indumentaria', (req,res)=>{
   })
 })
 
+server.put('/actualizarDato',(req, res) => {
+  const nuevoNombre = req.body.nuevoNombre;
+  const id = req.body.id;
+  conector.query(`UPDATE usuarios SET nombre = '${nuevoNombre}' WHERE idusuario = ${id}`),
+  (err)=>{
+    if (err) {
+      console.log(err)
+    }else{
+      console.log('se actualizó correctamente')
+    }
+  }
+})
+
 const port = 3001;
 
 server.listen(port, () => {

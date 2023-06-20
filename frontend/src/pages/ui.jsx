@@ -1,4 +1,4 @@
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, useParams  } from "react-router-dom";
 import CajaUser, { CajaIndumentaria } from "../components/caja";
 import logoInfo from '../images/iu/lofoInfo.jpg';
 import '../styles/ui.css';
@@ -10,14 +10,17 @@ import { useState } from "react";
 
 export default function UserInterface(){
 
+    let { id } = useParams(); //id del usuario que ingresó
+
     const [producto, setProducto] = useState('')
 
+    const [datoAActualizar, setDatoAActualizar] = useState(null);
 
     const [listaZapas, setListaZapas] = useState([]); //creo array para guardar las zapatillas que reciba
     const [listaIndumentaria, setListaIndumentaria] = useState([]); //creo array para guardar la ropa que reciba
     const [listaPromos, setListaPromos] = useState([]); //creo array para guardar las promos que reciba
 
-
+    
     const location = useLocation();
     const { datos } = location.state; //recibo los datos enviados de la variable state.
 
@@ -37,11 +40,28 @@ export default function UserInterface(){
         .catch(e =>{ console.log(e)}) //en caso de error imprimo en consola
     }
 
+    const verDatos = () =>{
+        setProducto('mis datos');
+    }
+
+    const actualizarDatos = () => {
+        const nuevoNombre = prompt('ingresa tu nuevo nombre');
+        axios.put('http://localhost:3001/actualizarDato',{
+            id,
+            nuevoNombre
+        })
+        .then((result)=>{
+            alert(result.data)
+        })
+        .catch((e)=>{console.log(e)});
+    }
+
     return(
         <div className="all">
             <div className="main-barra">
                 <h1><Link to={'/'} className='link'>MarketHub</Link></h1>
                 <div className='main-barra-links'>
+                    <p className="link" onClick={verDatos}>mis datos</p>
                     <p><Link className="link" to={'/'}>cerrar sesion</Link></p>
                 </div>
             </div>
@@ -53,7 +73,6 @@ export default function UserInterface(){
                     <li>Promos</li>
                 </ul>
             </div>
-            
             <div className='promos'>
             {producto === 'zapatillas' && (
                 <>
@@ -74,6 +93,17 @@ export default function UserInterface(){
                         ))}
                     </div>
                 </>
+            )}
+            {producto === 'mis datos' && (
+                <div className="verDatosUsuario">
+                    <ul>
+                        <h2>Tus datos {userDatos.nombre}: </h2> <br />
+                        <li>nombre: {userDatos.nombre} <button className="btn-actualizar" onClick={actualizarDatos} > actualizar</button></li>
+                        <li>apellido: {userDatos.apellido} <button className="btn-actualizar"> actualizar</button></li>
+                        <li>email: {userDatos.email} <button className="btn-actualizar"> actualizar</button></li>
+                        <li>nombre de usuario: {userDatos.username} <button className="btn-actualizar"> actualizar</button></li>
+                    </ul>
+                </div>
             )}
             </div>
         </div>

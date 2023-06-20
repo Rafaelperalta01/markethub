@@ -2,6 +2,7 @@ import '../styles/caja.css';
 
 export default function CajaUser({ props }){
 
+    //caja para mostrar zapatillas
     return(
         <div className="caja">
             <img  />
@@ -22,6 +23,7 @@ export default function CajaUser({ props }){
     );
 }
 
+//caja para mostrar indumentaria
 export function CajaIndumentaria({props}){
 
     return(
