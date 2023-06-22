@@ -3,6 +3,12 @@ import img1 from '../images/main/img.svg'
 import Navbar from '../components/nav';
 import Caja from '../components/cajamain2';
 import { Link } from 'react-router-dom';
+import facebook from '../images/footer/facebook.png'
+import instagram from '../images/footer/instagram.png'
+import twitter from '../images/footer/twitter.png'
+import buzoNike from '../images/main/buzo.png'
+import pumaSuede from '../images/zapatillas/pumasuede.png'
+import conjunto from '../images/main/conjuntopuma.png'
 
 
 export default function Main(){
@@ -23,9 +29,9 @@ export default function Main(){
             <div className="main2">
                 <p className='parrafo3'>Los productos más pedidos por nuestros clientes</p>
                 <div className='cajas'>
-                    <Caja />
-                    <Caja />
-                    <Caja />
+                    <Caja img={buzoNike}/>
+                    <Caja img={pumaSuede}/>
+                    <Caja img={conjunto}/>
                 </div>
             </div>
             <div className='main3'>
@@ -37,9 +43,17 @@ export default function Main(){
             <div className='usuarios'>
                 <h1>comentarios de usuarios</h1>
             </div>
-            <div className='footer'>
-                <h1>footer</h1>
-            </div>
+            <footer className='footer'>
+                <h1>MarketHub</h1>
+                <div className='container-img'>
+                    <a href='#'><img src={facebook} alt="" /></a>
+                    <a href='#'><img src={instagram} alt="" /></a>
+                    <a href='#'><img src={twitter} alt="" /></a>
+                </div>
+                <div className='container-text'>
+                    <p className='footer-parrafo'>Copyright 2023</p>
+                </div>
+            </footer>
         </>
     );
 }
