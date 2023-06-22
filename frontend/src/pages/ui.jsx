@@ -44,9 +44,9 @@ export default function UserInterface(){
         setProducto('mis datos');
     }
 
-    const actualizarDatos = () => {
-        const nuevoNombre = prompt('ingresa tu nuevo nombre');
-        axios.put('http://localhost:3001/actualizarDato',{
+    const actualizarNombre = () => { //ACTUALIZAR NOMBRE
+        const nuevoNombre = prompt('ingresa tu nuevo nombre'); //variable que guarda el nuevo dato
+        axios.put('http://localhost:3001/actualizarDato/nombre',{
             id,
             nuevoNombre
         })
@@ -54,6 +54,50 @@ export default function UserInterface(){
             alert(result.data)
         })
         .catch((e)=>{console.log(e)});
+    }
+    const actualizarApellido = () => { //ACTUALIZAR APELLIDO
+        const nuevoApellido = prompt('ingresa tu nuevo apellido'); //variable que guarda el nuevo dato
+        axios.put('http://localhost:3001/actualizarDato/apellido',{
+            id,
+            nuevoApellido
+        })
+        .then((result)=>{
+            alert(result.data)
+        })
+        .catch((e)=>{console.log(e)});
+    }
+    const actualizarEmail = () => { //ACTUALIZAR EMAIL
+        const nuevoEmail = prompt('ingresa tu nuevo email'); //variable que guarda el nuevo dato
+        axios.put('http://localhost:3001/actualizarDato/email',{
+            id,
+            nuevoEmail
+        })
+        .then((result)=>{
+            alert(result.data)
+        })
+        .catch((e)=>{console.log(e)});
+    }
+    const actualizarUsername = () => { //ACTUALIZAR USERNAME
+        const nuevoUsername = prompt('ingresa tu nuevo Username'); //variable que guarda el nuevo dato
+        axios.put('http://localhost:3001/actualizarDato/username',{
+            id,
+            nuevoUsername
+        })
+        .then((result)=>{
+            alert(result.data)
+        })
+        .catch((e)=>{console.log(e)});
+    }
+
+    const eliminarCuenta = () => {
+        axios.delete(`http://localhost:3001/eliminarCuenta/${id}`)
+        .then(e => {
+            alert(e.data.mensaje) // Elemento eliminado
+        })
+        .catch(error => {
+            console.error(error)
+        });
+        window.location.replace('/'); //redirecciona al main
     }
 
     return(
@@ -98,11 +142,13 @@ export default function UserInterface(){
                 <div className="verDatosUsuario">
                     <ul>
                         <h2>Tus datos {userDatos.nombre}: </h2> <br />
-                        <li>nombre: {userDatos.nombre} <button className="btn-actualizar" onClick={actualizarDatos} > actualizar</button></li>
-                        <li>apellido: {userDatos.apellido} <button className="btn-actualizar"> actualizar</button></li>
-                        <li>email: {userDatos.email} <button className="btn-actualizar"> actualizar</button></li>
-                        <li>nombre de usuario: {userDatos.username} <button className="btn-actualizar"> actualizar</button></li>
+                        <li>nombre: {userDatos.nombre} <button className="btn-actualizar" onClick={actualizarNombre} > actualizar</button></li>
+                        <li>apellido: {userDatos.apellido} <button className="btn-actualizar" onClick={actualizarApellido} > actualizar</button></li>
+                        <li>email: {userDatos.email} <button className="btn-actualizar" onClick={actualizarEmail} > actualizar</button></li>
+                        <li>nombre de usuario: {userDatos.username} <button className="btn-actualizar" onClick={actualizarUsername} > actualizar</button></li><br /><br />
+                        <p>¿Quieres eliminar tu cuenta? <button className="btn-eliminar" onClick={eliminarCuenta}> Eliminar cuenta</button></p>
                     </ul>
+                    
                 </div>
             )}
             </div>

@@ -94,18 +94,78 @@ server.get('/indumentaria', (req,res)=>{
     } else {
       res.send(result);
     }
-  })
-})
+  });
+});
 
-server.put('/actualizarDato',(req, res) => {
+//ACTUALIZAR NOMBRE DE USUARIO
+server.put('/actualizarDato/nombre',(req, res) => {
   const nuevoNombre = req.body.nuevoNombre;
   const id = req.body.id;
+  console.log(id)
   conector.query(`UPDATE usuarios SET nombre = '${nuevoNombre}' WHERE idusuario = ${id}`),
   (err)=>{
     if (err) {
       console.log(err)
     }else{
-      console.log('se actualizó correctamente')
+      console.log('se actualizó correctamente');
+    }
+  }
+})
+
+//ACTUALIZAR APELLIDO DE USUARIO
+server.put('/actualizarDato/apellido',(req, res) => {
+  const nuevoApellido= req.body.nuevoApellido;
+  const id = req.body.id;
+
+  conector.query(`UPDATE usuarios SET apellido = '${nuevoApellido}' WHERE idusuario = ${id}`),
+  (err)=>{
+    if (err) {
+      console.log(err)
+    }else{
+      console.log('se actualizó correctamente');
+    }
+  }
+})
+
+//ACTUALIZAR EMAIL DE USUARIO
+server.put('/actualizarDato/email',(req, res) => {
+  const nuevoEmail = req.body.nuevoEmail;
+  const id = req.body.id;
+
+  conector.query(`UPDATE usuarios SET email = '${nuevoEmail}' WHERE idusuario = ${id}`),
+  (err)=>{
+    if (err) {
+      console.log(err)
+    }else{
+      console.log('se actualizó correctamente');
+    }
+  }
+})
+
+//ACTUALIZAR NOMBRE DE USUARIO
+server.put('/actualizarDato/username',(req, res) => {
+  const nuevoUsername = req.body.nuevoUsername;
+  const id = req.body.id;
+
+  conector.query(`UPDATE usuarios SET username = '${nuevoUsername}' WHERE idusuario = ${id}`),
+  (err)=>{
+    if (err) {
+      console.log(err)
+    }else{
+      console.log('se actualizó correctamente');
+    }
+  }
+})
+
+//ELIMINAR USUARIO DE LA BASE DE DATOS
+server.delete('/eliminarCuenta/:id',(req,res)=>{
+  const { id } = req.params;
+  conector.query(`DELETE FROM usuarios WHERE idusuario = ${id}`),
+  (err)=>{
+    if (err) {
+      console.log(err)
+    }else{
+      res.json({mensaje:'se eliminó correctamente'});
     }
   }
 })

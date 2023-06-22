@@ -83,6 +83,11 @@
     padding: 5px 10px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-
+.btn-eliminar{
+    cursor: pointer;
+    padding: 5px 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #c01616;
+}
 
 
