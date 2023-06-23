@@ -3,6 +3,7 @@
     justify-content: space-between;
     height: 70px;
     background-color: rgb(99, 99, 240);
+    /* background-color: #00161c; */
     align-items: center;
 }
 .main-barra h1 {
@@ -28,3 +29,10 @@
 
 
 
+@media (max-width:760px){
+    .main-barra{
+        flex-flow: wrap column;
+        /* height: 90px; */
+        padding: 1em 1em;
+    }
+}

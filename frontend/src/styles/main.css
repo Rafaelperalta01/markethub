@@ -121,12 +121,27 @@
 .usuarios{
     height: 70vh;
     width: 100%;
-    background-color: #f3eeee;
+    background-color: #d9d9d9d9;
 }
 .footer{
     height: 250px;
     background-color: #040025;
     color: white;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 1em;
 }
-
-
+.container-img {
+    display: flex;
+    width: 200px;
+    justify-content: space-around;
+    padding: 1em;
+}
+.footer-parrafo {
+    display: flex;
+    justify-content: start;
+    align-items: flex-end;
+}
