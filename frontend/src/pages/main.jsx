@@ -76,10 +76,12 @@ export default function Main() {
             <img src={twitter} alt="" />
           </a>
         </div>
+      </footer>
         <div className="container-text">
           <p className="footer-parrafo">Copyright 2023</p>
+          <p className="footer-parrafo">Derechos Reservados</p>
+          <p className="footer-parrafo">Markethub</p>
         </div>
-      </footer>
     </div>
   );
 }
