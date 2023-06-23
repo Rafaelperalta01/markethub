@@ -1,3 +1,9 @@
+:root {
+    --colorFondo: #6E77EE;
+    --colorGris: #B7B4C5;
+    --colorGrisclaro: #E4E4E4;
+    --colorBlanco: #F9FAF5;
+}
 .App{
     padding: 0;
     margin: 0;
