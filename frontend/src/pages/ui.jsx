@@ -1,6 +1,5 @@
 import { useLocation, Link, useParams  } from "react-router-dom";
 import CajaUser, { CajaIndumentaria } from "../components/caja";
-import logoInfo from '../images/iu/lofoInfo.jpg';
 import '../styles/ui.css';
 import '../styles/navbar.css'
 import axios from "axios";
@@ -14,7 +13,6 @@ export default function UserInterface(){
 
     const [producto, setProducto] = useState('')
 
-    const [datoAActualizar, setDatoAActualizar] = useState(null);
 
     const [listaZapas, setListaZapas] = useState([]); //creo array para guardar las zapatillas que reciba
     const [listaIndumentaria, setListaIndumentaria] = useState([]); //creo array para guardar la ropa que reciba
@@ -36,6 +34,12 @@ export default function UserInterface(){
     const obtenerIndumentaria = () =>{
         setProducto('indumentaria');
         axios.get('http://localhost:3001/indumentaria') //hago solicitud get al back para obtener las ropas
+        .then(result =>{ setListaIndumentaria((result.data))}) //guardo los resultados del back en setListaIndumentaria
+        .catch(e =>{ console.log(e)}) //en caso de error imprimo en consola
+    }
+    const obtenerPromos = () =>{
+        setProducto('promos');
+        axios.get('http://localhost:3001/promos') //hago solicitud get al back para obtener las ropas
         .then(result =>{ setListaIndumentaria((result.data))}) //guardo los resultados del back en setListaIndumentaria
         .catch(e =>{ console.log(e)}) //en caso de error imprimo en consola
     }
@@ -114,16 +118,18 @@ export default function UserInterface(){
                 <ul>
                     <li onClick={obtenerZapatillas}>Zapatillas</li> {/* evento click que realiza la solicitud al back con la funcion creada*/}
                     <li onClick={obtenerIndumentaria}>Indumentaria</li>
-                    <li>Promos</li>
+                    <li onClick={obtenerPromos}>Promos</li>
                 </ul>
             </div>
             <div className='promos'>
+
+                
             {producto === 'zapatillas' && (
                 <>
                     <p className="msj-promo">ESTAS SON LAS ZAPAS PARA USUARIOS:</p>
                     <div className='zapas'>
                         {listaZapas.map((zapas, index) => (
-                            <CajaUser props={zapas} />
+                            <CajaUser key={index} props={zapas} />
                         ))}
                     </div>
                 </>
@@ -131,9 +137,21 @@ export default function UserInterface(){
             {producto === 'indumentaria' && (
                 <>
                     <p className="msj-promo">TENEMOS LA MEJOR ROPA PARA VOS:</p>
+                    
                     <div className='zapas'>
                         {listaIndumentaria.map((ind, index) => (
-                            <CajaIndumentaria props={ind} />
+                            <CajaIndumentaria key={index} props={ind} />
+                        ))}
+                    </div>
+                </>
+            )}
+            {producto === 'promos' && (
+                <>
+                    <p className="msj-promo">TENEMOS LAS MEJORES PROMOS PARA VOS:</p>
+                    
+                    <div className='zapas'>
+                        {listaIndumentaria.map((ind, index) => (
+                            <CajaIndumentaria key={index} props={ind} />
                         ))}
                     </div>
                 </>

@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql");
 const bcrypt = require("bcryptjs"); //importar modulo para encriptar contraseña
+const jwt = require('jsonwebtoken');
 
 const server = express();
 
@@ -60,8 +61,16 @@ server.post("/iniciar-sesion", (req, res) => {
           const contraseñaHash = datos.contraseña; //guardo constraseña encriptada de la db en una variable
           const esIgual = await bcrypt.compare(password, contraseñaHash); //comparo contraseña ingresada con la contraseña de la db
           if(esIgual) {
+
+            const payload = { //objeto para jwt
+              ckeck : true
+            }
+            const token = jwt.sign(payload, 'clav3s3cr3ta',{ //generar token pasandole el objeto anterior y una clave secreta.
+              expiresIn: '5m' //expiracion en 5 minutos
+            });
+             
             console.log("credenciales correctos"); 
-            res.send({ message: "inicio exitoso", datos: JSON.stringify(datos) }); //envio al front un mensaje y la variable datos que contiene los datos de la db en cadena.
+            res.send({ message: "inicio exitoso", token, datos: JSON.stringify(datos) }); //envio al front un mensaje y la variable datos que contiene los datos de la db en cadena.
           } else {
             console.log("contraseña incorrecta");
             res.send({ message: "contraseña incorrecta" });
@@ -78,6 +87,17 @@ server.post("/iniciar-sesion", (req, res) => {
 //obtener zapatillas
 server.get('/zapa',(req,res)=>{
   conector.query(`SELECT * FROM zapatillas`, (err,result)=>{ //busqueda de zapatillas en la db
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result); //envio resultados al front
+    }
+  });
+});
+
+//obtener promos
+server.get('/promos',(req,res)=>{
+  conector.query(`SELECT * FROM promos`, (err,result)=>{ //busqueda de zapatillas en la db
     if (err) {
       console.log(err);
     } else {
@@ -110,7 +130,7 @@ server.put('/actualizarDato/nombre',(req, res) => {
       console.log('se actualizó correctamente');
     }
   }
-})
+});
 
 //ACTUALIZAR APELLIDO DE USUARIO
 server.put('/actualizarDato/apellido',(req, res) => {
@@ -125,7 +145,7 @@ server.put('/actualizarDato/apellido',(req, res) => {
       console.log('se actualizó correctamente');
     }
   }
-})
+});
 
 //ACTUALIZAR EMAIL DE USUARIO
 server.put('/actualizarDato/email',(req, res) => {
@@ -140,7 +160,7 @@ server.put('/actualizarDato/email',(req, res) => {
       console.log('se actualizó correctamente');
     }
   }
-})
+});
 
 //ACTUALIZAR NOMBRE DE USUARIO
 server.put('/actualizarDato/username',(req, res) => {
@@ -155,7 +175,7 @@ server.put('/actualizarDato/username',(req, res) => {
       console.log('se actualizó correctamente');
     }
   }
-})
+});
 
 //ELIMINAR USUARIO DE LA BASE DE DATOS
 server.delete('/eliminarCuenta/:id',(req,res)=>{
@@ -168,7 +188,7 @@ server.delete('/eliminarCuenta/:id',(req,res)=>{
       res.json({mensaje:'se eliminó correctamente'});
     }
   }
-})
+});
 
 const port = 3001;
 

@@ -20,9 +20,10 @@ export default function IniciarSesion(){
             password
         })
         .then(response =>{
-            const { message, datos } = response.data; //recibo del back el mensaje y datos (en cadena)
+            const { message, datos, token } = response.data; //recibo del back el mensaje y datos (en cadena)
             if (message === 'inicio exitoso'){ //verifico si el mensaje es de inicio exitoso para mandarlo a la pagina de usuario
                 alert(message)
+                
                 const id = JSON.parse(datos) //variable que guarda los datos en json para poder usar el id para indicarle en la url
                 navigate(`/usuario/${id.idusuario}`,{ state: {datos} }); //ponemos la url hacia donde lo mandaremos y envio los datos en la variable state.
             } else {
