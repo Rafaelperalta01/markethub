@@ -1,0 +1,32 @@
+:root {
+    --colorFondo: #6E77EE;
+    --colorGris: #B7B4C5;
+    --colorGrisclaro: #E4E4E4;
+    --colorBlanco: #F9FAF5;
+}
+.card {
+    width: 300px;
+    height: 100px;
+    font-family: 'Montserrat', sans-serif;
+    color: #F9FAF5;
+    background: rgb(183,180,197);
+    background: linear-gradient(0deg, rgba(183,180,197,1) 0%, rgba(110,119,238,1) 80%);
+    border-radius: 1em;
+    padding: 1em;
+    white-space: wrap;
+    overflow: hidden;
+}
+.container-card{
+    width: 200px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.img {
+    width: 3em;
+}
+.comentario{
+    margin-top: 1em;
+    font-weight: 600;
+    text-overflow: ellipsis;
+}

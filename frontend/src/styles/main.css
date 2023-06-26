@@ -82,7 +82,7 @@
 }
 
 .main3{
-    height: 50vh;
+    height: 45vh;
     background-image: linear-gradient(#6E77EE,#F9FAF5) ;
 }
 .cajamain3{
@@ -123,6 +123,16 @@
     width: 100%;
     background-color: #F9FAF5;
     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container-comentarios {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* gap: 2em; */
 }
 .footer{
     height: 120px;

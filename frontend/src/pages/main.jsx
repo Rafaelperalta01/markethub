@@ -3,12 +3,13 @@ import img1 from "../images/main/img.svg";
 import Navbar from "../components/nav";
 import Caja from "../components/cajamain2";
 import { Link } from "react-router-dom";
-import facebookFill from "../images/footer/facebook.svg";
+import facebook from "../images/footer/facebook.svg";
 import instagram from "../images/footer/instagram.svg";
 import twitter from "../images/footer/twitter.svg";
 import buzoNike from "../images/main/buzo.png";
 import pumaSuede from "../images/zapatillas/pumasuede.png";
 import conjunto from "../images/main/conjuntopuma.png";
+import Comentarios from "../components/comentarios";
 
 export default function Main() {
   return (
@@ -61,19 +62,23 @@ export default function Main() {
         </div>
       </div>
       <div className="usuarios">
-        <h1>comentarios de usuarios</h1>
+        <div className="container-comentarios">
+        <Comentarios usuario="Lucas Cordoba" comentario="Excelentes productos !!!"/>
+        <Comentarios usuario="Mauro Drube"/>
+        <Comentarios usuario="Ramiro Diaz" comentario="Muy buena atencion y calidad de productos, super recomendable"/>
+        </div>
       </div>
       <footer className="footer">
         <h1>MarketHub</h1>
         <div className="container-img">
           <a href="#">
-            <img src={facebookFill} alt="" />
+            <img src={facebook} alt="Link Facebook" />
           </a>
           <a href="#">
-            <img src={instagram} alt="" />
+            <img src={instagram} alt="Link Instagram" />
           </a>
           <a href="#">
-            <img src={twitter} alt="" />
+            <img src={twitter} alt="Link Twitter" />
           </a>
         </div>
       </footer>
