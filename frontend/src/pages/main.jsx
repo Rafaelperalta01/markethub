@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import buzoNike from "../images/main/buzo.png";
 import pumaSuede from "../images/zapatillas/pumasuede.png";
 import conjunto from "../images/main/conjuntopuma.png";
+import Comentarios from "../components/comentarios";
 
 export default function Main() {
   return (
@@ -58,7 +59,11 @@ export default function Main() {
         </div>
       </div>
       <div className="usuarios">
-        <h1>comentarios de usuarios</h1>
+        <div className="container-comentarios">
+        <Comentarios usuario="Lucas Cordoba" comentario="Excelentes productos !!!"/>
+        <Comentarios usuario="Mauro Drube"/>
+        <Comentarios usuario="Ramiro Diaz" comentario="Muy buena atencion y calidad de productos, super recomendable"/>
+        </div>
       </div>
     </div>
   );

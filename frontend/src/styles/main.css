@@ -6,7 +6,7 @@
     display: flex;
     justify-content: space-between;
     height: 70px;
-    background-color: #6363f0;
+    background-color: #6E77EE;
     align-items: center;
 }
 .main-barra h1 {
@@ -21,7 +21,7 @@
 .main1{
     height: 100vh;
     width: 100%;
-    background-color: #f3eeee;
+    background-color: #F9FAF5;
     margin: 0;
 }
 .custom-shape-divider-bottom-1686963139 {
@@ -41,7 +41,7 @@
 }
 
 .custom-shape-divider-bottom-1686963139 .shape-fill {
-    fill: #4f4fe6;
+    fill: #6E77EE;
 }
 .main1 .parrafo1 {
     padding-top: 40px;
@@ -65,7 +65,7 @@
 .main2 {
     margin-top: .3%;
     height: 75vh;
-    background-color: #4f4fe6
+    background-color: #6E77EE;
 }
 .cajas{
     display: flex;
@@ -82,14 +82,14 @@
 }
 
 .main3{
-    height: 50vh;
-    background-image: linear-gradient(#4f4fe6,#f3eeee) ;
+    height: 45vh;
+    background-image: linear-gradient(#6E77EE,#F9FAF5) ;
 }
 .cajamain3{
     padding-top: 50px;
     height: 300px;
     width: 100%;
-    background-color: #13136d;
+    background-color: #6E77EE;
 }
 .parrafo4{
     color: white;
@@ -103,7 +103,7 @@
     margin: 60px auto;
     height: 50px;
     width: 250px;
-    background-color: #f3eeee;
+    background-color: #F9FAF5;
     color: black;
     font-size: 20px;
     font-family: 'Roboto', sans-serif;
@@ -116,10 +116,21 @@
 }
 .btn-registrar:hover{
     width: 350px;
-    background-color: #a8a8a8;
+    background-color: #B7BAC5;
 }
 .usuarios{
-    height: 70vh;
+    height: 40vh;
     width: 100%;
-    background-color: #d9d9d9d9;
+    background-color: #F9FAF5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container-comentarios {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* gap: 2em; */
 }

@@ -7,8 +7,8 @@ export default function Navbar(){
         <div className="main-barra">
                 <h1><Link to={'/'} className='link'>MarketHub</Link></h1>
                 <div className='main-barra-links'>
-                    <p><Link to={'/registrarse'} className='link'>registrarse</Link></p>
-                    <p><Link to={'/iniciar-sesion'} className='link'>Iniciar sesion</Link></p>
+                    <p><Link to={'/registrarse'} className='link'>Registrarse</Link></p>
+                    <p><Link to={'/iniciar-sesion'} className='link'>Iniciar Sesion</Link></p>
                 </div>
         </div>
     );

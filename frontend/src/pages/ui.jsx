@@ -40,7 +40,7 @@ export default function UserInterface(){
     const obtenerPromos = () =>{
         setProducto('promos');
         axios.get('http://localhost:3001/promos') //hago solicitud get al back para obtener las ropas
-        .then(result =>{ setListaIndumentaria((result.data))}) //guardo los resultados del back en setListaIndumentaria
+        .then(result =>{ setListaPromos((result.data))}) //guardo los resultados del back en setListaIndumentaria
         .catch(e =>{ console.log(e)}) //en caso de error imprimo en consola
     }
 
@@ -123,7 +123,7 @@ export default function UserInterface(){
             </div>
             <div className='promos'>
 
-                
+
             {producto === 'zapatillas' && (
                 <>
                     <p className="msj-promo">ESTAS SON LAS ZAPAS PARA USUARIOS:</p>
@@ -150,7 +150,7 @@ export default function UserInterface(){
                     <p className="msj-promo">TENEMOS LAS MEJORES PROMOS PARA VOS:</p>
                     
                     <div className='zapas'>
-                        {listaIndumentaria.map((ind, index) => (
+                        {listaPromos.map((ind, index) => (
                             <CajaIndumentaria key={index} props={ind} />
                         ))}
                     </div>

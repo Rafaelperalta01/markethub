@@ -2,8 +2,8 @@
     display: flex;
     justify-content: space-between;
     height: 70px;
-    background-color: rgb(99, 99, 240);
-    /* background-color: #00161c; */
+    /* background-color: rgb(99, 99, 240); */
+    background-color: #6E77EE;
     align-items: center;
 }
 .main-barra h1 {
@@ -16,7 +16,7 @@
     margin-right: 8vw;
 }
 .link{
-    color: #ffffff;
+    color: #F9FAF5;
     text-decoration: none;
     transition: .3s;
     font-family: 'Roboto', sans-serif;
@@ -24,7 +24,7 @@
     cursor: pointer;
 }
 .link:hover{
-    color: #cacaca;
+    color: #E4E4E4;
 }
 
 
