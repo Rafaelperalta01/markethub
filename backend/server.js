@@ -121,7 +121,7 @@ server.get('/indumentaria', (req,res)=>{
 server.put('/actualizarDato/nombre',(req, res) => {
   const nuevoNombre = req.body.nuevoNombre;
   const id = req.body.id;
-  console.log(id)
+
   conector.query(`UPDATE usuarios SET nombre = '${nuevoNombre}' WHERE idusuario = ${id}`),
   (err)=>{
     if (err) {

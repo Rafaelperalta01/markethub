@@ -7,7 +7,6 @@ import '../styles/comprar.css';
 
 export default function ComprarProducto(){
 
-    console.log(window.location.pathname)
 
     const location = useLocation(); //uselocation para recibir los datos
     const datos = location.state; //almacenar los datos en una varialbe
