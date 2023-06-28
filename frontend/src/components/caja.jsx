@@ -1,46 +1,40 @@
+import { useNavigate } from 'react-router-dom';
 import '../styles/caja.css';
 
-export default function CajaUser({ props }){
 
+
+
+export default function CajaUser({ props }){
     //caja para mostrar zapatillas
+    const comprar = useNavigate();
+    const verProducto = () => {
+       
+        const urln = window.location.pathname+ `/${props.nombre}`; //ruta actual agregandole otro camino para comprar
+        comprar(urln, {state: props }) //paso url y un objeto state para pasar los datos a la nueva url
+    }
     return(
         <div className="caja">
-            <img  />
             <div className='detalles'>
-                <h3 className='nombre-producto'></h3>
-                <div>
-                    <img src={props.img} alt="" />
-                    <p>ID: {props.idzapatilla}</p>
-                    <p>Marca: {props.marca}</p>
-                    <p>Nombre: {props.nombre}</p>
-                    <p>Color: {props.color}</p>
-                    <p>Talle: {props.talle}</p>
-                    <p>Precio: {props.precio}</p>
-                </div>
-                    <button className='btn-comprar'>Comprar</button>                               
+                    <button className='btn-comprar' onClick={ verProducto }>Comprar</button>                               
             </div>
         </div>
     );
 }
 
 //caja para mostrar indumentaria
-export function CajaIndumentaria({props}){
+export function CajaIndumentaria({props , producto}){
+    const comprar = useNavigate();
+    const verProducto = () => {
+        const urln = window.location.pathname+ `/${props.nombre}`;
+        comprar(urln, {state : props , producto})
+    }
 
     return(
         <div className="caja">
-            <img  />
             <div className='detalles'>
-                <h3 className='nombre-producto'></h3>
-                <div>
-                    <p>ID: {props.idzapatilla}</p>
-                    <p>Marca: {props.marca}</p>
-                    <p>Nombre: {props.nombre}</p>
-                    <p>Color: {props.color}</p>
-                    <p>Talle: {props.talle}</p>
-                    <p>Precio: {props.precio}</p>
-                </div>
-                    <button className='btn-comprar'>Comprar</button>                               
+                    <button className='btn-comprar' onClick={ verProducto }>Comprar</button>                               
             </div>
         </div>
     );
 }
+

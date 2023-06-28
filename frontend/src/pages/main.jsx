@@ -3,9 +3,6 @@ import img1 from "../images/main/img.svg";
 import Navbar from "../components/nav";
 import Caja from "../components/cajamain2";
 import { Link } from "react-router-dom";
-import facebook from "../images/footer/facebook.svg";
-import instagram from "../images/footer/instagram.svg";
-import twitter from "../images/footer/twitter.svg";
 import buzoNike from "../images/main/buzo.png";
 import pumaSuede from "../images/zapatillas/pumasuede.png";
 import conjunto from "../images/main/conjuntopuma.png";
@@ -68,25 +65,6 @@ export default function Main() {
         <Comentarios usuario="Ramiro Diaz" comentario="Muy buena atencion y calidad de productos, super recomendable"/>
         </div>
       </div>
-      <footer className="footer">
-        <h1>MarketHub</h1>
-        <div className="container-img">
-          <a href="#">
-            <img src={facebook} alt="Link Facebook" />
-          </a>
-          <a href="#">
-            <img src={instagram} alt="Link Instagram" />
-          </a>
-          <a href="#">
-            <img src={twitter} alt="Link Twitter" />
-          </a>
-        </div>
-      </footer>
-        <div className="container-text">
-          <p className="footer-parrafo">Copyright 2023</p>
-          <p className="footer-parrafo">Derechos Reservados</p>
-          <p className="footer-parrafo">Markethub</p>
-        </div>
     </div>
   );
 }

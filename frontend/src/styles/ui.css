@@ -67,7 +67,10 @@
     align-items: center;
     justify-content: center;
     height: 40vh;
+    padding: 40px 0;
     background-color: #145da1;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
     border-radius: 5px;
     list-style: none;
     font-size: 25px;

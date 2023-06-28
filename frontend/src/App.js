@@ -3,9 +3,11 @@ import './App.css';
 import {  BrowserRouter,Route, Routes } from 'react-router-dom'
 import Registro from './pages/registrarse';
 import IniciarSesion from './pages/iniciar-sesion';
-import Userlog from './pages/ui';
 import NotFound from './pages/notFound';
 import UserInterface from './pages/ui';
+import ComprarProducto from './pages/comprar';
+import Footer from './components/footer';
+
 
  
 function App() {
@@ -19,8 +21,11 @@ function App() {
           <Route path='/iniciar-sesion' element={< IniciarSesion/>} />
           <Route path='/usuario' element={< UserInterface/>} />
           <Route path='/usuario/:id' element={< UserInterface/>} />
+          <Route path='/usuario/:id/:producto' element={< ComprarProducto/>} />
+
         </Routes>
       </BrowserRouter>
+      <Footer />
     </div>
   );
 }
