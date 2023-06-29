@@ -134,3 +134,53 @@
     align-items: center;
     /* gap: 2em; */
 }
+@media (max-width: 760px) {
+    .main1 .parrafo2{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 20px;
+        text-align: center;
+        padding: 40px 50px 0 50px;
+    }
+    .custom-shape-divider-bottom-1686963139{
+        display: none;
+    }
+    .main2{
+        margin-top: -300px;
+    }
+    .main1 .img1 {
+        padding-top: 10vh;
+        max-height: 20vh;
+        display: block;
+        margin: 0 auto;
+    }
+    .main-barra-links{
+        display: flex;
+        align-items: center;
+        gap: 3vw;
+        margin-right: 8vw;
+        margin-left: 70px;
+    }
+    .parrafo4{
+        color: white;
+        font-size: 30px;
+        text-align: center;
+        font-family: 'Montserrat', sans-serif;
+        padding: 0 70px;
+        margin-top: -150px;
+    }
+    .main1 .parrafo1 {
+        padding-top: 40px;
+        font-weight: 600;
+        text-align: center;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 25px;
+    }
+    .parrafo3{
+        padding: 50px 20px 0px 20px;
+        color: white;
+        font-size: 30px;
+        text-align: center;
+        font-family: 'Roboto', sans-serif;
+    }
+}
+
