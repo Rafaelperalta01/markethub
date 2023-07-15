@@ -2,9 +2,9 @@ const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql");
 const bcrypt = require("bcryptjs"); //importar modulo para encriptar contraseña
-const jwt = require('jsonwebtoken');
-
+const { generarToken } = require('./funciones');
 const server = express();
+const jwt = require('jsonwebtoken');
 
 server.use(cors());
 server.use(express.json());
@@ -61,16 +61,9 @@ server.post("/iniciar-sesion", (req, res) => {
           const contraseñaHash = datos.contraseña; //guardo constraseña encriptada de la db en una variable
           const esIgual = await bcrypt.compare(password, contraseñaHash); //comparo contraseña ingresada con la contraseña de la db
           if(esIgual) {
-
-            const payload = { //objeto para jwt
-              ckeck : true
-            }
-            const token = jwt.sign(payload, 'clav3s3cr3ta',{ //generar token pasandole el objeto anterior y una clave secreta.
-              expiresIn: '5m' //expiracion en 5 minutos
-            });
-             
+            const token = generarToken(datos); // Generar el token JWT
             console.log("credenciales correctos"); 
-            res.send({ message: "inicio exitoso", token, datos: JSON.stringify(datos) }); //envio al front un mensaje y la variable datos que contiene los datos de la db en cadena.
+            res.send({ message: "inicio exitoso",token, datos: JSON.stringify(datos) }); //envio al front un mensaje y la variable datos que contiene los datos de la db en cadena.
           } else {
             console.log("contraseña incorrecta");
             res.send({ message: "contraseña incorrecta" });
@@ -96,12 +89,13 @@ server.get('/zapa',(req,res)=>{
 });
 
 //obtener promos
-server.get('/promos',(req,res)=>{
-  conector.query(`SELECT * FROM promos`, (err,result)=>{ //busqueda de zapatillas en la db
+server.get('/promos', (req, res) => {
+  conector.query(`SELECT * FROM promos`, (err, result) => {
     if (err) {
       console.log(err);
+      return res.status(500).json({ mensaje: 'Error interno del servidor.' });
     } else {
-      res.send(result); //envio resultados al front
+      res.send(result);
     }
   });
 });
@@ -117,69 +111,162 @@ server.get('/indumentaria', (req,res)=>{
   });
 });
 
-//ACTUALIZAR NOMBRE DE USUARIO
-server.put('/actualizarDato/nombre',(req, res) => {
-  const nuevoNombre = req.body.nuevoNombre;
-  const id = req.body.id;
+//ACTUALIZAR NOMBRE
+server.put('/actualizarDato/nombre', (req, res) => {
 
-  conector.query(`UPDATE usuarios SET nombre = '${nuevoNombre}' WHERE idusuario = ${id}`),
-  (err)=>{
-    if (err) {
-      console.log(err)
-    }else{
-      console.log('se actualizó correctamente');
-    }
+  const token = req.headers.authorization; //recibo token desde la cabecera enviado desde el cliente
+  const nuevoNombre = req.body.nuevoNombre; //recibo dato para actualizar
+  const id = req.body.id; //recibo id del usuario
+
+  if (!token) { // verifico si el token está incluido en la cabecera de la solicitud
+    return console.log('Token no proporcionado'); //si no lo está imprime en consola
   }
+
+  //funcion para verificar el estado del token
+  jwt.verify(token, 'clav3s3cr3ta', (err, decoded) => {
+    if (err) {
+      if (err.name === 'TokenExpiredError') { //si el error es del nombre especificado es que ya expiró el token y devuelve mensaje
+        return res.json({ msj: 'Token expirado' });
+      } else {
+        return res.json({ msj: 'Token inválido' }); //en caso de que el token no sea valido
+      }
+    }
+
+    //si el error del token no entra en los anteriores casos quiere decir que el token es correcto
+
+    conector.query(`UPDATE usuarios SET nombre = '${nuevoNombre}' WHERE idusuario = ${id}`, (err) => {
+      if (err) {
+        console.log(err);
+        console.log('Error al actualizar el nombre' );
+      }
+
+      console.log('Se actualizó correctamente');
+      res.json({ msj : 'El nombre se actualizó correctamente' }); // Envía una respuesta exitosa
+    });
+  });
 });
 
 //ACTUALIZAR APELLIDO DE USUARIO
 server.put('/actualizarDato/apellido',(req, res) => {
+  const token = req.headers.authorization;
   const nuevoApellido= req.body.nuevoApellido;
   const id = req.body.id;
 
-  conector.query(`UPDATE usuarios SET apellido = '${nuevoApellido}' WHERE idusuario = ${id}`),
-  (err)=>{
-    if (err) {
-      console.log(err)
-    }else{
-      console.log('se actualizó correctamente');
-    }
+  if (!token) { // verifico si el token está incluido en la cabecera de la solicitud
+    return console.log('Token no proporcionado'); //si no lo está imprime en consola
   }
+
+  //funcion para verificar el estado del token
+  jwt.verify(token, 'clav3s3cr3ta', (err, decoded) => {
+    if (err) {
+      if (err.name === 'TokenExpiredError') { //si el error es del nombre especificado es que ya expiró el token y devuelve mensaje
+        return res.json({ msj: 'Token expirado' });
+      } else {
+        return res.json({ msj: 'Token inválido' }); //en caso de que el token no sea valido
+      }
+    }
+
+    //si el error del token no entra en los anteriores casos quiere decir que el token es correcto
+
+    conector.query(`UPDATE usuarios SET apellido = '${nuevoApellido}' WHERE idusuario = ${id}`, (err) => {
+      if (err) {
+        console.log(err);
+        console.log('Error al actualizar el apellido' );
+      }
+
+      console.log('Se actualizó correctamente');
+      res.json({ msj : 'El apellido se actualizó correctamente' }); // Envía una respuesta exitosa
+    });
+  });
 });
 
 //ACTUALIZAR EMAIL DE USUARIO
 server.put('/actualizarDato/email',(req, res) => {
+  const token = req.headers.authorization;
   const nuevoEmail = req.body.nuevoEmail;
   const id = req.body.id;
 
-  conector.query(`UPDATE usuarios SET email = '${nuevoEmail}' WHERE idusuario = ${id}`),
-  (err)=>{
-    if (err) {
-      console.log(err)
-    }else{
-      console.log('se actualizó correctamente');
-    }
+  if (!token) { // verifico si el token está incluido en la cabecera de la solicitud
+    return res.json({ msj: 'Token no proporcionado' }); //si no lo está imprime en consola
   }
+
+  //funcion para verificar el estado del token
+  jwt.verify(token, 'clav3s3cr3ta', (err, decoded) => {
+    if (err) {
+      if (err.name === 'TokenExpiredError') { //si el error es del nombre especificado es que ya expiró el token y devuelve mensaje
+        return res.json({ msj: 'Token expirado' });
+      } else {
+        return res.json({ msj: 'Token inválido' }); //en caso de que el token no sea valido
+      }
+    }
+
+    //si el error del token no entra en los anteriores casos quiere decir que el token es correcto
+
+    conector.query(`UPDATE usuarios SET email = '${nuevoEmail}' WHERE idusuario = ${id}`, (err) => {
+      if (err) {
+        console.log(err);
+        console.log('Error al actualizar el email' );
+      }
+
+      console.log('Se actualizó correctamente');
+      res.json({ msj : 'El email se actualizó correctamente' }); // Envía una respuesta exitosa
+    });
+  });
 });
 
-//ACTUALIZAR NOMBRE DE USUARIO
+//ACTUALIZAR USERNAME
 server.put('/actualizarDato/username',(req, res) => {
+  const token = req.headers.authorization;
   const nuevoUsername = req.body.nuevoUsername;
   const id = req.body.id;
 
-  conector.query(`UPDATE usuarios SET username = '${nuevoUsername}' WHERE idusuario = ${id}`),
-  (err)=>{
-    if (err) {
-      console.log(err)
-    }else{
-      console.log('se actualizó correctamente');
-    }
+  if (!token) { // verifico si el token está incluido en la cabecera de la solicitud
+    return res.json({ msj: 'Token no proporcionado' }); //si no lo está imprime en consola
   }
+
+  //funcion para verificar el estado del token
+  jwt.verify(token, 'clav3s3cr3ta', (err, decoded) => {
+    if (err) {
+      if (err.name === 'TokenExpiredError') { //si el error es del nombre especificado es que ya expiró el token y devuelve mensaje
+        return res.json({ msj: 'Token expirado' });
+      } else {
+        return res.json({ msj: 'Token inválido' }); //en caso de que el token no sea valido
+      }
+    }
+
+    //si el error del token no entra en los anteriores casos quiere decir que el token es correcto
+
+    conector.query(`UPDATE usuarios SET username = '${nuevoUsername}' WHERE idusuario = ${id}`, (err) => {
+      if (err) {
+        console.log(err);
+        console.log('Error al actualizar el username' );
+      }
+
+      console.log('Se actualizó correctamente');
+      res.json({ msj : 'El username se actualizó correctamente' }); // Envía una respuesta exitosa
+    });
+  });
 });
 
 //ELIMINAR USUARIO DE LA BASE DE DATOS
 server.delete('/eliminarCuenta/:id',(req,res)=>{
+  const token = req.headers.authorization;
   const { id } = req.params;
+
+  if(!token){
+    return res.json({ msj:'token no proporcionado' });
+  }
+
+  jwt.verify(token, 'clav3s3cr3ta', (err, decoded)=>{
+    if(err){
+      if(err.name === 'TokenExpiredError'){
+        return res.json({ msj:'Token expirado' })
+      } else {
+        return res.json({ msj:'Token invalido' })
+      }
+    }
+  })
+
   conector.query(`DELETE FROM usuarios WHERE idusuario = ${id}`),
   (err)=>{
     if (err) {

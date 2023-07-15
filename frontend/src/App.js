@@ -22,7 +22,6 @@ function App() {
           <Route path='/usuario' element={< UserInterface/>} />
           <Route path='/usuario/:id' element={< UserInterface/>} />
           <Route path='/usuario/:id/:producto' element={< ComprarProducto/>} />
-
         </Routes>
       </BrowserRouter>
       <Footer />

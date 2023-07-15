@@ -1,29 +1,21 @@
+const jwt = require('jsonwebtoken');
 
+// Función para generar el token JWT
+function generarToken(usuario) {
+  const payload = {
+    usuario: {
+      id: usuario.idusuario,
+      username: usuario.username,
+    },
+  };
 
+  const token = jwt.sign(payload, 'clav3s3cr3ta', {
+    expiresIn: '15m',
+  });
 
-
-const verifyToken = (req, res, next) =>{
-    const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1];
-    console.log(authHeader);
-    if(token==null){
-        return res.send('Token requerido');
-    }
-    jwt.verify(token, 'clav3s3cr3ta', (err, user)=>{
-        if(err){
-            res.send('token invalido');
-        } 
-        console.log(user);
-        req.user = user;
-        next();
-    });
+  return token;
 }
 
 
-module.exports = {
-    verifyToken
-}
-
-
-
+module.exports = { generarToken };
 

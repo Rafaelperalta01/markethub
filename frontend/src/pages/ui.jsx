@@ -11,7 +11,7 @@ export default function UserInterface(){
 
     let { id } = useParams(); //id del usuario que ingresó
 
-    const [producto, setProducto] = useState('')
+    const [producto, setProducto] = useState('promos')
 
 
     const [listaZapas, setListaZapas] = useState([]); //creo array para guardar las zapatillas que reciba
@@ -48,73 +48,107 @@ export default function UserInterface(){
         setProducto('mis datos');
     }
 
+    const token = localStorage.getItem('token')
+
     const actualizarNombre = () => { //ACTUALIZAR NOMBRE
+        
+        console.log(token)
         const nuevoNombre = prompt('ingresa tu nuevo nombre'); //variable que guarda el nuevo dato
         axios.put('http://localhost:3001/actualizarDato/nombre',{
             id,
             nuevoNombre
+        },{
+            headers: {
+                Authorization : token
+            }
         })
         .then((result)=>{
-            alert(result.data)
+            alert(result.data.msj)
         })
         .catch((e)=>{console.log(e)});
     }
+
     const actualizarApellido = () => { //ACTUALIZAR APELLIDO
         const nuevoApellido = prompt('ingresa tu nuevo apellido'); //variable que guarda el nuevo dato
         axios.put('http://localhost:3001/actualizarDato/apellido',{
             id,
             nuevoApellido
+        },{
+            headers: {
+                Authorization: token
+            }
         })
         .then((result)=>{
-            alert(result.data)
+            alert(result.data.msj)
         })
         .catch((e)=>{console.log(e)});
     }
+
     const actualizarEmail = () => { //ACTUALIZAR EMAIL
         const nuevoEmail = prompt('ingresa tu nuevo email'); //variable que guarda el nuevo dato
         axios.put('http://localhost:3001/actualizarDato/email',{
             id,
             nuevoEmail
+        },{
+            headers:{
+                Authorization: token
+            }
         })
         .then((result)=>{
-            alert(result.data)
+            alert(result.data.msj)
         })
         .catch((e)=>{console.log(e)});
     }
+
     const actualizarUsername = () => { //ACTUALIZAR USERNAME
         const nuevoUsername = prompt('ingresa tu nuevo Username'); //variable que guarda el nuevo dato
         axios.put('http://localhost:3001/actualizarDato/username',{
             id,
             nuevoUsername
+        },{
+            headers:{
+                Authorization: token
+            }
         })
         .then((result)=>{
-            alert(result.data)
+            alert(result.data.msj)
         })
         .catch((e)=>{console.log(e)});
     }
 
     const eliminarCuenta = () => {
-        axios.delete(`http://localhost:3001/eliminarCuenta/${id}`)
+        axios.delete(`http://localhost:3001/eliminarCuenta/${id}`,{
+            headers : {
+                Authorization: token
+            }
+        })
         .then(e => {
-            alert(e.data.mensaje) // Elemento eliminado
+            alert(e.data.msj) // Elemento eliminado
         })
         .catch(error => {
             console.error(error)
         });
+        localStorage.removeItem('token');
         window.location.replace('/'); //redirecciona al main
     }
 
+    //funcion de cerrar sesion
+    const cerrarSesion = () => {
+        localStorage.removeItem('token'); //remover el token de localStorage
+        window.location.replace('/'); //dirigirlo a la pagina main
+    }
+    
     return(
         <div className="all">
             <div className="main-barra">
                 <h1><Link to={'/'} className='link'>MarketHub</Link></h1>
                 <div className='main-barra-links'>
                     <p className="link" onClick={verDatos}>mis datos</p>
-                    <p><Link className="link" to={'/'}>cerrar sesion</Link></p>
+                    <p onClick={cerrarSesion} className="link">cerrar sesion</p>
                 </div>
             </div>
             <div className="productos">
-                <p className="saludo">Bienvenido, {userDatos.nombre} </p>
+                <p className="saludo">Bienvenido, {userDatos.nombre} </p> <hr />
                 <ul>
                     <li onClick={obtenerZapatillas}>Zapatillas</li> {/* evento click que realiza la solicitud al back con la funcion creada*/}
                     <li onClick={obtenerIndumentaria}>Indumentaria</li>
@@ -122,7 +156,6 @@ export default function UserInterface(){
                 </ul>
             </div>
             <div className='promos'>
-
 
             {producto === 'zapatillas' && (
                 <>

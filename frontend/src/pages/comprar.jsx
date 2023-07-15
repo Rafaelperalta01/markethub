@@ -2,15 +2,10 @@ import { useLocation } from "react-router-dom"
 import '../styles/comprar.css';
 
 
-
-
-
 export default function ComprarProducto(){
-
 
     const location = useLocation(); //uselocation para recibir los datos
     const datos = location.state; //almacenar los datos en una varialbe
-
 
     return(
         <>
@@ -28,32 +23,25 @@ export default function ComprarProducto(){
                     <p>Talle: {datos.talle}</p>
                     <p>precio: ${datos.precio}</p>
             </div>
-            <div class="caja-pago">
+            <div className="caja-pago">
                 <h2>Pago con tarjeta</h2>
                 <form>
-                <label for="nombre-titular">Nombre del titular:</label>
+                <label htmlFor="nombre-titular">Nombre del titular:</label>
                 <input type="text" id="nombre-titular" required />
 
-                <label for="numero-tarjeta">Número de tarjeta:</label>
+                <label htmlFor="numero-tarjeta">Número de tarjeta:</label>
                 <input type="text" id="numero-tarjeta" required />
 
-                <label for="fecha-expiracion">Fecha de expiración:</label>
+                <label htmlFor="fecha-expiracion">Fecha de expiración:</label>
                 <input type="text" id="fecha-expiracion" required />
 
-                <label for="cvv">CVV:</label>
+                <label htmlFor="cvv">CVV:</label>
                 <input type="text" id="cvv" required />
 
                 <button type="submit">Pagar</button>
                 </form>
             </div>
             </div>
-            
-            
         </>
-        
     )
 }
-
-
-
-
