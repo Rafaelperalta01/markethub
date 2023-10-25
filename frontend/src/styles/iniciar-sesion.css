@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 100px;
+    background-color: #1a1a1a;
     padding-bottom: 60px
 }
 .iniciar-sesion{
@@ -11,17 +11,20 @@
     flex-direction: column;
     height: auto;
     width: auto;
+    background: linear-gradient(15deg,#5454d6,#0e0e6a);
+    /* background-color: #040d89; */
+    margin-top: 40px;
     padding: 50px 70px;
-    border: 1px solid black;
     border-radius: 20px;
-    transition: .5s;
+    transition: .4s;
 }
 .iniciar-sesion h1{
     margin-top: 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #ffffff;
+    font-family: 'Tilt Neon', sans-serif;
 }
 .iniciar-sesion:hover{
-    box-shadow: 9px 9px 20px rgb(18, 8, 77);
+    box-shadow: 0px 0px 30px #4a4949;
 }
 .iscaja input{
     height: 35px;
@@ -35,16 +38,17 @@
     
     background-color: #d6e1ec;
 }
+
 .isbtn {
     display: flex;
     font-size: 15px;
     align-items: center;
     justify-content: center;
     height: 40px;
-    width: 120px;
+    width: 150px;
+    border: none;
     border-radius: 20px;
-    outline: 1px solid black;
-    background-color: rgb(162, 195, 250);
+    background-color: rgb(222, 229, 242);
     cursor: pointer;
     margin: 50px auto;
     border: none;
@@ -52,8 +56,8 @@
 }
 .isbtn:hover{
     width: 300px;
-    color: white;
-    background-color: #124d81;
+    color: rgb(0, 0, 0);
+    background-color: rgb(140, 152, 147);
 }
 .mensaje{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

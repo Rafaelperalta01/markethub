@@ -37,6 +37,7 @@ export default function UserInterface(){
         .then(result =>{ setListaIndumentaria((result.data))}) //guardo los resultados del back en setListaIndumentaria
         .catch(e =>{ console.log(e)}) //en caso de error imprimo en consola
     }
+    
     const obtenerPromos = () =>{
         setProducto('promos');
         axios.get('http://localhost:3001/promos') //hago solicitud get al back para obtener las ropas
@@ -52,8 +53,15 @@ export default function UserInterface(){
 
     const actualizarNombre = () => { //ACTUALIZAR NOMBRE
         
-        console.log(token)
         const nuevoNombre = prompt('ingresa tu nuevo nombre'); //variable que guarda el nuevo dato
+        if(nuevoNombre === null ){
+            alert('cancelaste la operacion')
+            return;
+        }
+        if(nuevoNombre ==="" ){
+            alert("Ingresa un valor válido");
+            return;
+        }
         axios.put('http://localhost:3001/actualizarDato/nombre',{
             id,
             nuevoNombre
@@ -70,6 +78,14 @@ export default function UserInterface(){
 
     const actualizarApellido = () => { //ACTUALIZAR APELLIDO
         const nuevoApellido = prompt('ingresa tu nuevo apellido'); //variable que guarda el nuevo dato
+        if(nuevoApellido == null ){
+            alert('cancelaste la operacion')
+            return;
+        }
+        if(nuevoApellido ==="" ){
+            alert("Ingresa un valor válido");
+            return;
+        }
         axios.put('http://localhost:3001/actualizarDato/apellido',{
             id,
             nuevoApellido
@@ -86,6 +102,14 @@ export default function UserInterface(){
 
     const actualizarEmail = () => { //ACTUALIZAR EMAIL
         const nuevoEmail = prompt('ingresa tu nuevo email'); //variable que guarda el nuevo dato
+        if(nuevoEmail == null ){
+            alert('cancelaste la operacion')
+            return;
+        }
+        if(nuevoEmail ===""){
+            alert("Ingresa un valor válido");
+            return;
+        }
         axios.put('http://localhost:3001/actualizarDato/email',{
             id,
             nuevoEmail
@@ -102,6 +126,14 @@ export default function UserInterface(){
 
     const actualizarUsername = () => { //ACTUALIZAR USERNAME
         const nuevoUsername = prompt('ingresa tu nuevo Username'); //variable que guarda el nuevo dato
+        if(nuevoUsername == null ){
+            alert('cancelaste la operacion')
+            return;
+        }
+        if(nuevoUsername ===""){
+            alert("Ingresa un valor válido");
+            return;
+        }
         axios.put('http://localhost:3001/actualizarDato/username',{
             id,
             nuevoUsername
@@ -124,12 +156,13 @@ export default function UserInterface(){
         })
         .then(e => {
             alert(e.data.msj) // Elemento eliminado
+            localStorage.removeItem('token');
+            window.location.replace('/'); //redirecciona al main
         })
         .catch(error => {
             console.error(error)
         });
-        localStorage.removeItem('token');
-        window.location.replace('/'); //redirecciona al main
+        
     }
 
     //funcion de cerrar sesion

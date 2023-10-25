@@ -12,7 +12,7 @@ server.use(express.json());
 const conector = mysql.createConnection({
   user: "root",
   host: "localhost",
-  database: "markethub",
+  database: "markethubb",
   password: "45123619",
 });
 
@@ -30,14 +30,19 @@ server.post("/registrar", async (req, res) => {
 
   let passwordHash = await bcrypt.hash(password, 8); // encripto la contraseña y la guardo en una variable para mandarla a la db.
 
-  conector.query(
+    conector.query(
     "INSERT INTO usuarios (nombre,apellido,username,email,contraseña) VALUES (?,?,?,?,?)",
     [nombre, apellido, username, email, passwordHash],
     (err, result) => {
       if (err) {
+        if(err.sqlMessage.includes('email')){
+          res.send({ mensaje : "Ya existe una cuenta con ese email", cod : 1})
+        }if (err.sqlMessage.includes('username')) {
+          res.send({ mensaje : "Ya existe una cuenta con ese username", cod : 2})
+        }
         console.log(err);
       } else {
-        res.send("Registrado con exito, ve a iniciar sesion.");
+        res.send({ mensaje :"Registrado con exito, iniciar sesion.", cod : 3});
         console.log("datos insertados con exito");
       }
     }
@@ -122,17 +127,14 @@ server.put('/actualizarDato/nombre', (req, res) => {
     return console.log('Token no proporcionado'); //si no lo está imprime en consola
   }
 
-  //funcion para verificar el estado del token
   jwt.verify(token, 'clav3s3cr3ta', (err, decoded) => {
     if (err) {
-      if (err.name === 'TokenExpiredError') { //si el error es del nombre especificado es que ya expiró el token y devuelve mensaje
-        return res.json({ msj: 'Token expirado' });
+      if (err.name === 'TokenExpiredError') {
+        return res.json({ msj: 'Token expirado, reinicia sesión' });
       } else {
-        return res.json({ msj: 'Token inválido' }); //en caso de que el token no sea valido
+        return res.json({ msj: 'Token inválido' });
       }
     }
-
-    //si el error del token no entra en los anteriores casos quiere decir que el token es correcto
 
     conector.query(`UPDATE usuarios SET nombre = '${nuevoNombre}' WHERE idusuario = ${id}`, (err) => {
       if (err) {
@@ -159,14 +161,12 @@ server.put('/actualizarDato/apellido',(req, res) => {
   //funcion para verificar el estado del token
   jwt.verify(token, 'clav3s3cr3ta', (err, decoded) => {
     if (err) {
-      if (err.name === 'TokenExpiredError') { //si el error es del nombre especificado es que ya expiró el token y devuelve mensaje
-        return res.json({ msj: 'Token expirado' });
+      if (err.name === 'TokenExpiredError') { 
+        return res.json({ msj: 'Token expirado, reinicia sesión' });
       } else {
-        return res.json({ msj: 'Token inválido' }); //en caso de que el token no sea valido
+        return res.json({ msj: 'Token inválido' });
       }
     }
-
-    //si el error del token no entra en los anteriores casos quiere decir que el token es correcto
 
     conector.query(`UPDATE usuarios SET apellido = '${nuevoApellido}' WHERE idusuario = ${id}`, (err) => {
       if (err) {
@@ -190,17 +190,14 @@ server.put('/actualizarDato/email',(req, res) => {
     return res.json({ msj: 'Token no proporcionado' }); //si no lo está imprime en consola
   }
 
-  //funcion para verificar el estado del token
   jwt.verify(token, 'clav3s3cr3ta', (err, decoded) => {
     if (err) {
-      if (err.name === 'TokenExpiredError') { //si el error es del nombre especificado es que ya expiró el token y devuelve mensaje
-        return res.json({ msj: 'Token expirado' });
+      if (err.name === 'TokenExpiredError') { 
+        return res.json({ msj: 'Token expirado, reinicia sesión' });
       } else {
-        return res.json({ msj: 'Token inválido' }); //en caso de que el token no sea valido
+        return res.json({ msj: 'Token inválido' }); 
       }
     }
-
-    //si el error del token no entra en los anteriores casos quiere decir que el token es correcto
 
     conector.query(`UPDATE usuarios SET email = '${nuevoEmail}' WHERE idusuario = ${id}`, (err) => {
       if (err) {
@@ -224,17 +221,14 @@ server.put('/actualizarDato/username',(req, res) => {
     return res.json({ msj: 'Token no proporcionado' }); //si no lo está imprime en consola
   }
 
-  //funcion para verificar el estado del token
   jwt.verify(token, 'clav3s3cr3ta', (err, decoded) => {
     if (err) {
-      if (err.name === 'TokenExpiredError') { //si el error es del nombre especificado es que ya expiró el token y devuelve mensaje
-        return res.json({ msj: 'Token expirado' });
+      if (err.name === 'TokenExpiredError') { 
+        return res.json({ msj: 'Token expirado, reinicia sesión' });
       } else {
-        return res.json({ msj: 'Token inválido' }); //en caso de que el token no sea valido
+        return res.json({ msj: 'Token inválido' });
       }
     }
-
-    //si el error del token no entra en los anteriores casos quiere decir que el token es correcto
 
     conector.query(`UPDATE usuarios SET username = '${nuevoUsername}' WHERE idusuario = ${id}`, (err) => {
       if (err) {
@@ -260,7 +254,7 @@ server.delete('/eliminarCuenta/:id',(req,res)=>{
   jwt.verify(token, 'clav3s3cr3ta', (err, decoded)=>{
     if(err){
       if(err.name === 'TokenExpiredError'){
-        return res.json({ msj:'Token expirado' })
+        return res.json({ msj:'Token expirado, reinicia sesión' })
       } else {
         return res.json({ msj:'Token invalido' })
       }

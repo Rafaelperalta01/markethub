@@ -17,7 +17,7 @@ export default function CajaUser({ props }){
     return(
         <div className="caja">
             <div className='detalles'>
-                    <img className='zaa' src={ass} alt="" />
+                    <img className='zaa' src={ass} alt="zapa" />
                     <button className='btn-comprar' onClick={ verProducto }>Comprar</button>                               
             </div>
         </div>

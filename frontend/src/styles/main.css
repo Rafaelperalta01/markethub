@@ -6,7 +6,7 @@
     display: flex;
     justify-content: space-between;
     height: 70px;
-    background-color: #6E77EE;
+    background-color: #070e62;
     align-items: center;
 }
 .main-barra h1 {
@@ -21,46 +21,61 @@
 .main1{
     height: 100vh;
     width: 100%;
-    background-color: #F9FAF5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 200px;
+    background-color: #1a1a1a;
     margin: 0;
 }
-.custom-shape-divider-bottom-1686963139 {
-    position: absolute;
-    bottom: -76px;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
-    transform: rotate(180deg);
-}
-
-.custom-shape-divider-bottom-1686963139 svg {
-    position: relative;
-    display: block;
-    width: calc(128% + 1.3px);
-    height: 150px;
-}
-
-.custom-shape-divider-bottom-1686963139 .shape-fill {
-    fill: #6E77EE;
-}
-.main1 .parrafo1 {
-    padding-top: 40px;
-    font-weight: 600;
-    text-align: center;
+.main1 .parrafos p{
+    color: aliceblue;
     font-family: 'Montserrat', sans-serif;
-    font-size: 40px;
+    margin-left: -80px;
 }
-.main1 .parrafo2{
-    font-family: 'Montserrat', sans-serif;
-    font-size: 40px;
-    padding-top: 40px;
-    text-align: center;
+.main1 .title{
+    margin-top: -170px;
+    margin-left: 50px;
+    font-size: 50px;
+    color: white;
+    font-weight: 900;
+    font-family: 'Tilt Neon', sans-serif;
 }
-.main1 .img1 {
-    padding-top: 10vh;
-    max-height: 35vh;
-    display: block;
-    margin: 0 auto;
+.title b {
+    font-weight: 900;
+    color: #0325cc;
+}
+.img1{
+    height: 300px;
+}
+.xo{
+    height: 400px;
+    animation: flotar 4s infinite;
+}
+@keyframes flotar{
+    0%{transform: translateX(0px)}
+    50%{transform: translateX(100px)}
+    100%{transform: translateX(0px)}
+}
+.botones{
+    margin-top: 50px;
+    display: flex;
+    margin-left: -50px;
+    gap: 50px;
+}
+.botones button{
+    height: 40px;
+    width: 160px;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+    background: linear-gradient(15deg,#5a5abf,#1818f0);
+    transition: .4s;
+}
+.botones button:hover{
+    width: 180px;
+    background: linear-gradient(15deg,#9f9fe9,#7272f5);
 }
 .main2 {
     margin-top: .3%;

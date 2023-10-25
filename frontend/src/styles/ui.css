@@ -51,8 +51,8 @@
 .zapas{
     display: flex;
     justify-content: center;
-    padding: 2% 8%;
-    gap: 9%;
+    padding: 2% 0%;
+    gap: 5%;
     flex-wrap: wrap;
 }
 .verDatosUsuario{
@@ -65,29 +65,57 @@
     justify-content: center;
     height: 40vh;
     padding: 40px 0;
-    background-color: #145da1;
+    background: linear-gradient(25deg,#4f68b9,#1254cd);
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     border-radius: 5px;
     list-style: none;
     font-size: 25px;
 }
+.verDatosUsuario  ul h2{
+    font-size: 30px;
+    font-weight: 900;
+    font-family: 'Montserrat', sans-serif;
+}
 .verDatosUsuario li {
     line-height: 2;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+}
+.verDatosUsuario ul p {
+    font-size: 23px;
 }
 .titulo-datos{
     display: flex;
 }
 .btn-actualizar{
+    margin-left: 10px;
+    height: 30px;
+    width: 100px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(15deg,#300b85,#002a84);
     cursor: pointer;
+    color: white;
     padding: 5px 10px;
+    transition: all .5s;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+.btn-actualizar:hover{
+    border-radius: 20px;
+    background: linear-gradient(30deg,#242b54,rgb(58, 58, 181));
+}
 .btn-eliminar{
+    margin-left: 10px;
+    height: 30px;
+    width: 150px;
+    border: none;
+    border-radius: 20px;
+    background-color: #961515;
     cursor: pointer;
+    color: #ffffff;
     padding: 5px 10px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: #c01616;
 }
 
 

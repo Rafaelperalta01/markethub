@@ -1,8 +1,9 @@
 .cajamain2 {
     height: 35vh;
-    width: 25vw;
+    width: 35vw;
     /* border: 1px solid white; */
     border-radius: 20px;
+    padding: 40px;
     animation: flotar 3s infinite;
 }
 
@@ -10,7 +11,7 @@
     width: 100%;
     height: 100%;
     border-radius: 20px;
-    object-fit: cover;
+    object-fit: scale-down;
     aspect-ratio: 1/1;
 }
 

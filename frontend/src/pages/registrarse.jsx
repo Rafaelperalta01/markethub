@@ -28,12 +28,20 @@ export default function Registro(){
             email,
             password
         })
-        .then(e =>{alert(e.data)})
+        .then(e =>{
+            if(e.data.cod === 1){
+                alert(e.data.mensaje);
+            } else if (e.data.cod === 2){
+                alert(e.data.mensaje);
+            } else {
+                alert(e.data.mensaje);
+                window.location.replace('/iniciar-sesion');
+            }
+        })
         .catch(e =>{console.log(e.message)})
         limpiar();
     }
 
-    
     const limpiar=()=>{
         const nombre = document.querySelector('.nombre');
         const apellido = document.querySelector('.apellido');
@@ -61,7 +69,7 @@ export default function Registro(){
                         <input className='password' type="password" placeholder='Password' onChange={e =>{setPassword(e.target.value)}} required/>
                         <button className='rbtn' onClick={enviarDatos}>Registrarte</button>
                     </div>
-                    <p className='mensaje'>¿Ya tienes una cuenta? <Link to={'/iniciar-sesion'}>Iniciar sesión</Link></p>
+                    <p className='mensaje'>¿Ya tienes una cuenta? <Link className='a' to={'/iniciar-sesion'}>Iniciar sesión</Link></p>
                 </div>
             </div>
         </>

@@ -10,7 +10,7 @@ function generarToken(usuario) {
   };
 
   const token = jwt.sign(payload, 'clav3s3cr3ta', {
-    expiresIn: '15m',
+    expiresIn: '30s',
   });
 
   return token;

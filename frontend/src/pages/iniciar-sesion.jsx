@@ -52,7 +52,7 @@ export default function IniciarSesion(){
                         <input className='password' type="password" placeholder='Password' onChange={e =>{setPassword(e.target.value)}} />
                         <button className='isbtn' onClick={enviarDatos}>Entrar</button>
                     </div>
-                    <p className='mensaje'>¿Todavía no tenés cuenta? <Link to={'/registrarse'}>registrarse</Link></p>
+                    <p className='mensaje'>¿Todavía no tenés cuenta? <Link className='a' to={'/registrarse'}>registrarse</Link></p>
                 </div>
             </div>
         </>
