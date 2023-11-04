@@ -7,6 +7,7 @@ import NotFound from './pages/notFound';
 import UserInterface from './pages/ui';
 import ComprarProducto from './pages/comprar';
 import Footer from './components/footer';
+import ReestablecerContraseña from './pages/reestablecerContraseña';
 
 
  
@@ -19,12 +20,13 @@ function App() {
           <Route path='*' element={<NotFound />} />
           <Route path='/registrarse' element={<Registro />} />
           <Route path='/iniciar-sesion' element={< IniciarSesion/>} />
+          <Route path='/reestablecer-contraseña' element={< ReestablecerContraseña/>} />
           <Route path='/usuario' element={< UserInterface/>} />
           <Route path='/usuario/:id' element={< UserInterface/>} />
           <Route path='/usuario/:id/:producto' element={< ComprarProducto/>} />
         </Routes>
       </BrowserRouter>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

@@ -1,0 +1,44 @@
+.box{
+    margin: 0;
+    height: 230px;
+    width: 250px;
+    background: #d8d8d8;
+}
+.img{
+    width: 100%; /* Hacer que la imagen ocupe todo el ancho del div */
+    height: 100%; /* Hacer que la imagen ocupe todo el alto del div */
+    object-fit: scale-down;
+}
+.descripcion {
+    height: auto;
+    padding: 0 10px 30px 20px;
+    margin-top: -30px;
+    background-color: #d8d8d8;
+}
+.descripcion .desc-nombre {
+    font-size: 18px;
+    font-weight: 100;
+    font-family: 'Roboto', sans-serif;
+}
+.descripcion .desc-precio {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 900;
+}
+.descripcion .desc-cuotas {
+    color: #1100ff;
+    margin-top: 10px;
+    font-size: 15px;
+    font-weight: 900;
+}
+.descripcion .desc-envio{
+    color: #272727;
+    margin-top: 10px;
+}
+
+
+
+
+
+
+

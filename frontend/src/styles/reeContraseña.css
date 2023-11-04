@@ -1,0 +1,30 @@
+.RC{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.rc-cont h1{
+    font-size: 23px;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+.rc-cont{
+    text-align: center;
+    height: 500px;
+    width: 450px;
+    padding: 50px 30px;
+    border: 1px solid red;
+    border-radius: 20px;
+}
+
+
+
+
+
+
+
+
+
+

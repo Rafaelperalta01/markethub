@@ -9,14 +9,3 @@
     text-align: center;
     padding: 1em;
 }
-.container-img {
-    display: flex;
-    width: 200px;
-    justify-content: space-around;
-    padding: 1em;
-}
-.footer-parrafo {
-    display: flex;
-    justify-content: start;
-    align-items: flex-end;
-}

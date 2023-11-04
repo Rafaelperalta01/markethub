@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import ass from '../images/zapatillas/2.jpg'
-import as from '../images/main/buzo.png'
+
+
 import '../styles/caja.css';
 
 
@@ -17,7 +17,7 @@ export default function CajaUser({ props }){
     return(
         <div className="caja">
             <div className='detalles'>
-                    <img className='zaa' src={ass} alt="zapa" />
+                    <img className='zaa' src={'#'} alt="zapa" />
                     <button className='btn-comprar' onClick={ verProducto }>Comprar</button>                               
             </div>
         </div>
@@ -35,7 +35,7 @@ export function CajaIndumentaria({props , producto}){
     return(
         <div className="caja">
             <div className='detalles'>
-            <img className='zaa' src={as} alt="" />
+            <img className='zaa' src={"#"} alt="" />
                     <button className='btn-comprar' onClick={ verProducto }>Comprar</button>                               
             </div>
         </div>

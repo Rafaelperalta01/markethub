@@ -1,18 +1,21 @@
 .main-barra {
     display: flex;
     justify-content: space-between;
-    height: 70px;
+    height: 60px;
     /* background-color: rgb(99, 99, 240); */
-    background-color: #050b62;
+    /* background-color: #050b62; */
+    background: linear-gradient(15deg,#050b62,#4318a7,#4a51ad);
     align-items: center;
 }
 .main-barra h1 {
     margin-left: 5vw;
+    font-size: 25px;
 }
 .main-barra-links{
     display: flex;
     align-items: center;
     gap: 3vw;
+    font-size: 15px;
     margin-right: 8vw;
 }
 .link{
@@ -26,7 +29,28 @@
 .link:hover{
     color: #E4E4E4;
 }
-
+.products ul{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    display: flex;
+    color: white;
+    gap: 50px;
+    list-style: none;
+}
+.subnav{
+    height: 30px;
+    display: flex;
+    background-color: #E4E4E4;
+    justify-content: center;
+    align-items: center;
+}
+.subnav ul {
+    display: flex;
+    list-style: none;
+    gap: 100px;
+    color: #424040;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
 
 
 @media (max-width:760px){

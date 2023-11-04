@@ -1,4 +1,4 @@
-import { Link, useNavigate, useParams} from 'react-router-dom' //usenavigate para redirigir al usuario a su cuenta
+import { Link, useNavigate} from 'react-router-dom' //usenavigate para redirigir al usuario a su cuenta
 import Navbar from '../components/nav'
 import { useState } from 'react'
 import '../styles/iniciar-sesion.css'
@@ -11,12 +11,12 @@ export default function IniciarSesion(){
 
     const navigate = useNavigate();
 
-    const[username, setUsername] = useState('')
+    const[email, setEmail] = useState('')
     const[password, setPassword] = useState('')
 
     const enviarDatos = () => {
         axios.post('http://localhost:3001/iniciar-sesion',{
-            username,
+            email,
             password
         })
         .then(response =>{
@@ -48,11 +48,13 @@ export default function IniciarSesion(){
                 <div className="iniciar-sesion">
                     <h1>Iniciar Sesión</h1>
                     <div className='iscaja' >
-                        <input className='username' type="text" placeholder='Username' onChange={e =>{setUsername(e.target.value)}} />
-                        <input className='password' type="password" placeholder='Password' onChange={e =>{setPassword(e.target.value)}} />
+                        <input className='username' type="text" placeholder='Username' onChange={e =>{setEmail(e.target.value)}} />
+                        <input className='password' type="password" placeholder='Password' onChange={e =>{setPassword(e.target.value)}} /> <br />
+                        <p className='mensaje'>¿Olvidaste tu contraseña? <Link className='a' to={'/reestablecer-contraseña'}> reestablecer</Link></p>
                         <button className='isbtn' onClick={enviarDatos}>Entrar</button>
                     </div>
                     <p className='mensaje'>¿Todavía no tenés cuenta? <Link className='a' to={'/registrarse'}>registrarse</Link></p>
+                    
                 </div>
             </div>
         </>

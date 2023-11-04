@@ -12,7 +12,7 @@ server.use(express.json());
 const conector = mysql.createConnection({
   user: "root",
   host: "localhost",
-  database: "markethubb",
+  database: "markethub",
   password: "45123619",
 });
 
@@ -24,21 +24,20 @@ server.get("/", (req, res) => {
 server.post("/registrar", async (req, res) => {
   const nombre = req.body.nombre;
   const apellido = req.body.apellido;
-  const username = req.body.username;
+  const dni = req.body.dni;
+  const tel = req.body.telefono;
   const email = req.body.email;
   const password = req.body.password;
 
   let passwordHash = await bcrypt.hash(password, 8); // encripto la contraseña y la guardo en una variable para mandarla a la db.
 
     conector.query(
-    "INSERT INTO usuarios (nombre,apellido,username,email,contraseña) VALUES (?,?,?,?,?)",
-    [nombre, apellido, username, email, passwordHash],
+    "INSERT INTO usuarios (nombre,apellido,dni,telefono,email,contraseña) VALUES (?,?,?,?,?,?)",
+    [nombre, apellido, dni, tel, email, passwordHash],
     (err, result) => {
       if (err) {
         if(err.sqlMessage.includes('email')){
           res.send({ mensaje : "Ya existe una cuenta con ese email", cod : 1})
-        }if (err.sqlMessage.includes('username')) {
-          res.send({ mensaje : "Ya existe una cuenta con ese username", cod : 2})
         }
         console.log(err);
       } else {
@@ -51,12 +50,12 @@ server.post("/registrar", async (req, res) => {
 
 //iniciar sesion
 server.post("/iniciar-sesion", (req, res) => {
-  const username = req.body.username; //datos que recibo desde el front
+  const email = req.body.email; //datos que recibo desde el front
   const password = req.body.password;
 
   conector.query( //busqueda del usuario en la db
-    "SELECT * FROM usuarios WHERE username=? ", //sentencia sql para buscar en la db
-    [username], //paso valor recibido desde el front para realizar la busqueda
+    "SELECT * FROM usuarios WHERE email=? ", //sentencia sql para buscar en la db
+    [email], //paso valor recibido desde el front para realizar la busqueda
     async (err, result) => {
       if (err) {
         console.log(err);
@@ -80,6 +79,23 @@ server.post("/iniciar-sesion", (req, res) => {
       }
     }
   );
+});
+
+//reestablecer contraseña
+server.post("/reestablecer-contraseña", (req,res) =>{
+  const email = req.body.email;
+  const emailsExistentes = `SELECT * FROM usuarios WHERE email = ${email}`;
+  conector.query(emailsExistentes, (err,result)=>{
+    if(err){
+      console.log(err)
+    }else{
+      if(result > 0 ){
+        const emailSi = result[0];
+        const a = emailSi.email;
+        console.log(a)
+      }
+    }
+  })
 });
 
 //obtener zapatillas
