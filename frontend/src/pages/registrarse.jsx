@@ -87,6 +87,7 @@ export default function Registro() {
                 <div className="registro">
                     <div className='a1'>
                         <h1>Welcome</h1>
+                        
                     </div>
                     <div className='a2'>
                         <div className='datos-personales'>
@@ -124,16 +125,3 @@ export default function Registro() {
         </>
     )
 }
-
-
-
-
-{/* <div className='rcaja' >
-                        <input className='nombre' type="text" placeholder='Nombre' onChange={e =>{setNombre(e.target.value)}} required/>
-                        <input className='apellido' type="text" placeholder='Apellido' onChange={e =>{setApellido(e.target.value)}} required/>
-                        <input className='username' type="text" placeholder='Username' onChange={e =>{setUsername(e.target.value)}} required/>
-                        <input className='email' type="text" placeholder='email' onChange={e =>{setEmail(e.target.value)}} required/>
-                        <input className='password' type="password" placeholder='Password' onChange={e =>{setPassword(e.target.value)}} required/>
-                        <button className='rbtn' onClick={enviarDatos}>Registrarte</button>
-                    </div> 
-                    <p className='mensaje'>¿Ya tienes una cuenta? <Link className='a' to={'/iniciar-sesion'}>Iniciar sesión</Link></p>*/}
