@@ -120,6 +120,138 @@
     gap: 5%;
     flex-wrap: wrap;
 }
+.box-datos{
+    height: calc(100vh - 100px);
+    width: 100%;
+    background-color: #1e1e1e;
+    display: flex;
+
+}
+.panel{
+    width: 280px;
+    background-color: #2d2d2d;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    color: #fff;
+    flex-direction: column;
+    padding-top: 20px;
+}
+.panel p {
+    margin-top: 30px;
+    cursor: pointer;
+}
+.panel h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.panel .foto-userr{
+    margin-top: 20px;
+    height: 150px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+}
+.panel .btn-volver{
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    padding-bottom: 3px;
+    color: white;
+    transition: .4s;
+}
+.btn-volver:hover{
+    color: #d1d1d1;
+    border-bottom: 3px solid #0051ff;
+}
+.cont {
+    width: 70%;
+    background-color: #1e1e1e;
+    padding: 30px;
+}
+.contenido {
+    display: flex;
+    flex-direction: column;
+    padding-left: 30px;
+}
+.contenido h1 {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+}
+.contenido ul {
+    padding: 40px ;
+    display: flex;
+    gap: 40px;
+    list-style: none;
+    color: whitesmoke;
+    font-family: 'Montserrat', sans-serif;
+}
+.datosp .p{
+    margin-top: 25px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 100;
+    color: whitesmoke;
+}
+.datosc .p{
+    margin-top: 55px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 100;
+    color: whitesmoke;
+}
+.datosp input {
+    height: 35px;
+    width: 220px;
+    background-color: #3d3d3d;
+    border: none;
+    margin-top: 5px;
+    border-radius: 5px;
+    color: #b8b8b8;
+    padding-left: 10px;
+}
+.datosc ul {
+    display: flex;
+    flex-direction: column;
+}
+.datosc .we {
+    height: 35px;
+    width: 270px;
+    background-color: #3d3d3d;
+    border: none;
+    margin-top: 5px;
+    border-radius: 5px;
+    color: #b8b8b8;
+    padding-left: 10px;
+}
+.datosc input {
+    height: 30px;
+    width: 200px;
+    background-color: #3d3d3d;
+    border: none;
+    margin-top: 5px;
+    border-radius: 5px;
+    color: #b8b8b8;
+    padding-left: 10px;
+}
+.eliminar-cuenta{
+    border: none;
+    border-radius: 10px;
+    height: 40px;
+    width: 170px;
+    margin-top: 10px;
+    font-size: 15px;
+    color: #000000;
+    background-color: #d17979;
+    cursor: pointer;
+    transition: .5s;
+}
+.eliminar-cuenta:hover{
+    width: 180px;
+    color: #ffffff;
+    background-color: red;
+}
 .verDatosUsuario{
     width: 100%;
 }

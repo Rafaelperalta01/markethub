@@ -7,7 +7,6 @@ export default function Box(props){
     const precio = props.precio;
     const cuotas = Math.floor(props.precio / 3);
 
-
     return(
         <div className="box">
             <div>

@@ -7,11 +7,12 @@
     margin-top: -3%;
 }
 .iniciar-sesion{
-    box-shadow: 0 0  60px #818181;
+    box-shadow: 0 20px 60px -10px #818181;
     margin-top: 50px;
     height: 480px;
     width: 60%;
     border-radius: 5px;
+    background-color: #e3e3ee;
     display: flex;
     justify-content: space-between;
     box-sizing: border-box;
@@ -23,6 +24,7 @@
     height: 100%;
     background: linear-gradient(45deg,#38387e,#6d6dfa);
     box-sizing: border-box;
+    clip-path: polygon(0 0, 100% 0, 80% 100%, 0% 100%);
 }
 .iz h1 {
     font-family: 'Montserrat', sans-serif;

@@ -3,6 +3,7 @@
     height: 230px;
     width: 250px;
     background: #d8d8d8;
+    border-radius: 8px;
 }
 .img{
     width: 100%; /* Hacer que la imagen ocupe todo el ancho del div */
@@ -12,7 +13,8 @@
 .descripcion {
     height: auto;
     padding: 0 10px 30px 20px;
-    margin-top: -30px;
+    margin-top: -35px;
+    border-radius: 8px;
     background-color: #d8d8d8;
 }
 .descripcion .desc-nombre {

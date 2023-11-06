@@ -5,6 +5,7 @@ import '../styles/navbar.css'
 import axios from "axios";
 import { useState } from "react";
 import Box from "../components/Box";
+import user from '../images/main/user.jfif'
 
 
 
@@ -48,6 +49,10 @@ export default function UserInterface() {
 
     const verDatos = () => {
         setProducto('mis datos');
+    }
+
+    const volver = () => {
+        setProducto('');
     }
 
     const token = localStorage.getItem('token')
@@ -189,88 +194,143 @@ export default function UserInterface() {
                     <li>Kids</li>
                 </ul>
             </div>
-
-            <div className="menu-lateral">
-                <aside>
-                    <p >Género</p>
-                    <ul>
-                        <li><input type="checkbox" /> <b>hombre</b></li>
-                        <li><input type="checkbox" /> <b>mujer</b></li>
-                        <li><input type="checkbox" /> <b>niño</b></li>
-                    </ul><br /><hr /><br />
-                    <p >Marca</p>
-                    <ul>
-                        <li><input type="checkbox" /> <b>Nike</b></li>
-                        <li><input type="checkbox" /> <b>Adidas</b></li>
-                        <li><input type="checkbox" /> <b>Puma</b></li>
-                    </ul><br /><hr /><br />
-                    <p >Talle</p><br />
-                    <div className="box-talles">
+            {producto === '' && (
+                <div className="menu-lateral">
+                    <aside>
+                        <p >Género</p>
                         <ul>
-                            <li><input type="checkbox" /> <b>29</b></li>
-                            <li><input type="checkbox" /> <b>31</b></li>
-                            <li><input type="checkbox" /> <b>33</b></li>
-                            <li><input type="checkbox" /> <b>35</b></li>
-                            <li><input type="checkbox" /> <b>37</b></li>
-                            <li><input type="checkbox" /> <b>39</b></li>
-                            <li><input type="checkbox" /> <b>41</b></li>
-                            <li><input type="checkbox" /> <b>43</b></li>
-                            <li><input type="checkbox" /> <b>45</b></li>
-                            <li><input type="checkbox" /> <b>47</b></li>
-                        </ul>
+                            <li><input type="checkbox" /> <b>hombre</b></li>
+                            <li><input type="checkbox" /> <b>mujer</b></li>
+                            <li><input type="checkbox" /> <b>niño</b></li>
+                        </ul><br /><hr /><br />
+                        <p >Marca</p>
                         <ul>
-                            <li><input type="checkbox" /> <b>30</b></li>
-                            <li><input type="checkbox" /> <b>32</b></li>
-                            <li><input type="checkbox" /> <b>34</b></li>
-                            <li><input type="checkbox" /> <b>36</b></li>
-                            <li><input type="checkbox" /> <b>38</b></li>
-                            <li><input type="checkbox" /> <b>40</b></li>
-                            <li><input type="checkbox" /> <b>42</b></li>
-                            <li><input type="checkbox" /> <b>44</b></li>
-                            <li><input type="checkbox" /> <b>46</b></li>
-                            <li><input type="checkbox" /> <b>48</b></li>
-                        </ul>
-                        <br />
-                    </div><br /><hr /><br />
-                    <p >Precio</p>
-                    <div className="box-precios">
-                        <ul>
-                        <li><input type="checkbox" /> <b>-$50.000</b></li>
-                        <li><input type="checkbox" /> <b>-$80.000</b></li>
-                        <li><input type="checkbox" /> <b>-$100.000</b></li>
-                    </ul>
+                            <li><input type="checkbox" /> <b>Nike</b></li>
+                            <li><input type="checkbox" /> <b>Adidas</b></li>
+                            <li><input type="checkbox" /> <b>Puma</b></li>
+                        </ul><br /><hr /><br />
+                        <p >Talle</p><br />
+                        <div className="box-talles">
+                            <ul>
+                                <li><input type="checkbox" /> <b>29</b></li>
+                                <li><input type="checkbox" /> <b>31</b></li>
+                                <li><input type="checkbox" /> <b>33</b></li>
+                                <li><input type="checkbox" /> <b>35</b></li>
+                                <li><input type="checkbox" /> <b>37</b></li>
+                                <li><input type="checkbox" /> <b>39</b></li>
+                                <li><input type="checkbox" /> <b>41</b></li>
+                                <li><input type="checkbox" /> <b>43</b></li>
+                                <li><input type="checkbox" /> <b>45</b></li>
+                                <li><input type="checkbox" /> <b>47</b></li>
+                            </ul>
+                            <ul>
+                                <li><input type="checkbox" /> <b>30</b></li>
+                                <li><input type="checkbox" /> <b>32</b></li>
+                                <li><input type="checkbox" /> <b>34</b></li>
+                                <li><input type="checkbox" /> <b>36</b></li>
+                                <li><input type="checkbox" /> <b>38</b></li>
+                                <li><input type="checkbox" /> <b>40</b></li>
+                                <li><input type="checkbox" /> <b>42</b></li>
+                                <li><input type="checkbox" /> <b>44</b></li>
+                                <li><input type="checkbox" /> <b>46</b></li>
+                                <li><input type="checkbox" /> <b>48</b></li>
+                            </ul>
+                            <br />
+                        </div><br /><hr /><br />
+                        <p >Precio</p>
+                        <div className="box-precios">
+                            <ul>
+                                <li><input type="checkbox" /> <b>-$50.000</b></li>
+                                <li><input type="checkbox" /> <b>-$80.000</b></li>
+                                <li><input type="checkbox" /> <b>-$100.000</b></li>
+                            </ul>
+                        </div>
+                    </aside>
+                    <main>
+                        <Box nombre='Nike Air Max 90'
+                            precio='75000'
+                            envioGratis={true}
+                        />
+                        <Box nombre='Nike Air Max 90'
+                            precio='65000'
+                            envioGratis={true}
+                        />
+                        <Box nombre='Nike Air Max 90'
+                            precio='70000'
+                            envioGratis={true}
+                        />
+                        <Box nombre='Nike Air Max 90'
+                            precio='75000'
+                            envioGratis={true}
+                        />
+                        <Box nombre='Nike Air Max 90'
+                            precio='75000'
+                            envioGratis={true}
+                        />
+                        <Box nombre='Nike Air Max 90'
+                            precio='75000'
+                            envioGratis={true}
+                        />
+                    </main>
+                </div>
+            )}
+            {producto === 'mis datos' && (
+                <div className="box-datos">
+                    <div className="panel">
+                        <h1>Bienvido {userDatos.nombre}</h1>
+                        <div className="foto-user">
+                            <img className="foto-userr" src={user} alt="" />
+                        </div>
+                        <p className="btn-volver" onClick={volver}>volver</p>
                     </div>
-                    
+                    <div className="cont">
+                        <div className="contenido">
+                            <h1>Mi perfil</h1><br /><hr />
+                            <div className="datosp">
+                                <p className="p">Datos personales</p>
+                                <ul>
+                                    <li>
+                                        <p>Nombre <input type="text" value={userDatos.nombre} readOnly></input></p>
+                                    </li>
+                                    <li>
+                                        <p>Apellido <input type="text" value={userDatos.apellido} readOnly /></p>
+                                    </li>
+                                    <li>
+                                        <p>DNI <input type="text" value={userDatos.dni} readOnly /></p>
+                                    </li>
+                                    <li>
+                                        <p>Teléfono <input type="text" value={userDatos.telefono} readOnly /></p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div className="datosc">
+                                <p className="p">Datos de tu cuenta</p>
+                                <ul>
+                                    <li>
+                                        <p>Email <br /> <input className="we" type="text" value={userDatos.email} readOnly></input></p>
+                                    </li>
+                                    <li>
+                                        <button className="eliminar-cuenta">Eliminar cuenta</button>
+                                    </li>
+                                </ul>
 
-                </aside>
-                <main>
-                    <Box nombre='Nike Air Max 90'
-                    precio='75000'
-                    envioGratis={true}
-                    />
-                    <Box nombre='Nike Air Max 90'
-                    precio='65000'
-                    envioGratis={true}
-                    />
-                    <Box nombre='Nike Air Max 90'
-                    precio='70000'
-                    envioGratis={true}
-                    />
-                    <Box nombre='Nike Air Max 90'
-                    precio='75000'
-                    envioGratis={true}
-                    />
-                    <Box nombre='Nike Air Max 90'
-                    precio='75000'
-                    envioGratis={true}
-                    />
-                    <Box nombre='Nike Air Max 90'
-                    precio='75000'
-                    envioGratis={true}
-                    />
-                </main>
-            </div>
-            
+                            </div>
+                        </div>
+                    </div>
+                    {/* <div className="verDatosUsuario">
+                        <ul>
+                            <h2>Tus datos {userDatos.nombre}: </h2> <br />
+                            <li>nombre: {userDatos.nombre} <button className="btn-actualizar" onClick={actualizarNombre} > actualizar</button></li>
+                            <li>apellido: {userDatos.apellido} <button className="btn-actualizar" onClick={actualizarApellido} > actualizar</button></li>
+                            <li>email: {userDatos.email} <button className="btn-actualizar" onClick={actualizarEmail} > actualizar</button></li>
+                            <li>nombre de usuario: {userDatos.username} <button className="btn-actualizar" onClick={actualizarUsername} > actualizar</button></li><br /><br />
+                            <p>¿Quieres eliminar tu cuenta? <button className="btn-eliminar" onClick={eliminarCuenta}> Eliminar cuenta</button></p>
+                            <p onClick={volver}>volver</p>
+                        </ul>
+                    </div> */}
+                </div>
+
+            )}
 
             {/* <div className="productos">
                 <p className="saludo">Bienvenido, {userDatos.nombre} </p> <hr />
@@ -282,7 +342,13 @@ export default function UserInterface() {
             </div> */}
 
 
-            {producto === 'zapatillas' && (
+
+        </div>
+
+    );
+}
+/*
+{producto === 'zapatillas' && (
                 <>
                     <p className="msj-promo">ESTAS SON LAS ZAPAS PARA USUARIOS:</p>
                     <div className='zapas'>
@@ -323,9 +389,4 @@ export default function UserInterface() {
                         <p>¿Quieres eliminar tu cuenta? <button className="btn-eliminar" onClick={eliminarCuenta}> Eliminar cuenta</button></p>
                     </ul>
                 </div>
-            )}
-        </div>
-
-    );
-}
-
+            )}*/

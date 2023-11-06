@@ -76,8 +76,10 @@ export default function Registro() {
         apellido.value = '';
         dni.value = '';
         tel.value = '';
+        cemail.value = '';
         email.value = '';
         password.value = '';
+        cpass.value = '';
     }
 
     return (
@@ -87,7 +89,7 @@ export default function Registro() {
                 <div className="registro">
                     <div className='a1'>
                         <h1>Welcome</h1>
-                        
+                        <p>Already have an account ? <a className='btn-de-pass'><Link to={'/iniciar-sesion'}>Log in</Link></a></p>
                     </div>
                     <div className='a2'>
                         <div className='datos-personales'>
@@ -119,6 +121,7 @@ export default function Registro() {
                             </div>
                             <button className='btn-enviar' onClick={enviarDatos}>Send</button>
                         </div>
+                        
                     </div>
                 </div>
             </div>

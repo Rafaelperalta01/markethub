@@ -1,6 +1,6 @@
 .boxr{
     height: 100vh;
-    background-color: #e9e9e9;
+    background-color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,7 +10,8 @@
     margin: 50px 50px;
     width: 65%;
     display: flex;
-    box-shadow: 0 0  50px #e3e3ee;
+    box-shadow: 0 20px 60px #c4c0c0;
+    background-color: #e3e3ee;
     justify-content: space-between;
     position: relative;
 }
@@ -25,14 +26,24 @@
     display: flex;
     padding: 40px;
     flex-direction: column;
-    background: linear-gradient(45deg,#2e2e91,#6d6dfa);
+
     box-sizing: border-box;
 }
 
 .a1 h1 {
     font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
+    font-weight: 400;
     color: #d5d5d8;
+}
+.a1 p a {
+    color: #1b0847;
+}
+.a1 p {
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 30px;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
 }
 .a2{
     position: absolute;
