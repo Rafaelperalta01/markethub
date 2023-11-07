@@ -1,4 +1,44 @@
-.nav{
+.frase-comprar{
+  font-family: 'Montserrat', sans-serif;
+  color: aliceblue;
+}
+.caja-padre-comprar{
+  height: calc(100vh - 60px);
+  background-color: #dfdddb;
+  padding: 50px;
+  box-sizing: border-box;
+  display: flex;
+}
+
+.imagen-produc{
+  height: 100%;
+  width: 50%;
+  background-color: rgb(206, 204, 202);
+}
+.detalles{
+  height: 100%;
+  width: 50%;
+  background-color: #d3d2d0;
+  padding: 40px;
+  box-sizing: border-box;
+}
+.detalles h1 {
+  font-family: 'Tilt Neon', sans-serif;
+}
+.detalles p strike {
+  color: rgb(0, 0, 0);
+}
+.detalles p {
+  
+  font-family: 'Montserrat', sans-serif;
+  color: #5c5c5c;
+}
+
+
+
+
+
+/* .nav{
   text-align: center;
   font-family: 'Montserrat', sans-serif;
   font-size: 35px;
@@ -81,6 +121,6 @@
     justify-content: center;
     align-items: center;
   }
-}
+} */
 
 

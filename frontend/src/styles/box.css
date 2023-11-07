@@ -9,6 +9,7 @@
     width: 100%; /* Hacer que la imagen ocupe todo el ancho del div */
     height: 100%; /* Hacer que la imagen ocupe todo el alto del div */
     object-fit: scale-down;
+    cursor: pointer;
 }
 .descripcion {
     height: auto;

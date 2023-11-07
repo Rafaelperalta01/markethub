@@ -12,7 +12,7 @@ server.use(express.json());
 const conector = mysql.createConnection({
   user: "root",
   host: "localhost",
-  database: "markethubb",
+  database: "markethub",
   password: "45123619",
 });
 
