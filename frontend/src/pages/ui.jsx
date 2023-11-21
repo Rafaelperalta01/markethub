@@ -6,6 +6,7 @@ import axios from "axios";
 import { useState } from "react";
 import Box from "../components/Box";
 import user from '../images/main/user.jfif'
+import edit from '../images/zapatillas/edit.png'
 
 
 
@@ -291,15 +292,18 @@ export default function UserInterface() {
                                 <ul>
                                     <li>
                                         <p>Nombre <input type="text" value={userDatos.nombre} readOnly></input></p>
+                                        <img onClick={actualizarNombre} className="img-edit" src={edit} alt="a" />
                                     </li>
                                     <li>
                                         <p>Apellido <input type="text" value={userDatos.apellido} readOnly /></p>
+                                        <img onClick={actualizarApellido} className="img-edit" src={edit} alt="a" />
                                     </li>
                                     <li>
                                         <p>DNI <input type="text" value={userDatos.dni} readOnly /></p>
                                     </li>
                                     <li>
                                         <p>Teléfono <input type="text" value={userDatos.telefono} readOnly /></p>
+                                        <img className="img-edit" src={edit} alt="a" />
                                     </li>
                                 </ul>
                             </div>
@@ -308,12 +312,12 @@ export default function UserInterface() {
                                 <ul>
                                     <li>
                                         <p>Email <br /> <input className="we" type="text" value={userDatos.email} readOnly></input></p>
+                                        <img onClick={actualizarEmail} className="img-edit" src={edit} alt="" />
                                     </li>
                                     <li>
-                                        <button className="eliminar-cuenta">Eliminar cuenta</button>
+                                        <button onClick={eliminarCuenta} className="eliminar-cuenta">Eliminar cuenta</button>
                                     </li>
                                 </ul>
-
                             </div>
                         </div>
                     </div>
